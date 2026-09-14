@@ -4,22 +4,40 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{E9C7FDCE-D52A-8D73-7EB0-C5296AF258F6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{323BAF0A-9E51-ADA0-E7C8-38C2531E7E28}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{21EB8090-0D4E-1035-B6D3-48EBA215DCB7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{6A21415D-D637-3FF3-1FAF-CA148B04107B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Game Resource Files">
       <UniqueIdentifier>{BAF00917-2652-E724-AFBF-2DD71B201EE4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Resource Files\Sprites">
+      <UniqueIdentifier>{331128BF-9F1E-56A5-2805-52909411225C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Resource Files\Sprites\Player">
+      <UniqueIdentifier>{EFCACF76-DB06-D3E0-4419-EBD730747BFB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Windows Resource Files">
       <UniqueIdentifier>{6B659E97-575F-C7E9-40CC-5DFA2C652D56}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Game\Background.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
     <ClInclude Include="src\resource_dir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Game\Background.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -35,8 +53,23 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources\wabbit_alpha.png">
-      <Filter>Game Resource Files</Filter>
+    <Image Include="resources\Sprites\Background_0.png">
+      <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Background_1.png">
+      <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Ground.png">
+      <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Player\Player_Death.png">
+      <Filter>Game Resource Files\Sprites\Player</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Player\Player_Idle.png">
+      <Filter>Game Resource Files\Sprites\Player</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Player\Player_flap.png">
+      <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
   </ItemGroup>
 </Project>

@@ -25,6 +25,8 @@ int main ()
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
 	{
+		float deltaTime = GetFrameTime();
+
 		//LOGIC UPDATE
 		if (IsKeyDown(KEY_LEFT))
 			playerPos.x -= playerSpeed;
