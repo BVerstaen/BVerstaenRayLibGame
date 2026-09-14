@@ -8,7 +8,7 @@ int main ()
 {
 	//Init window & ressources
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-	InitWindow(800, 600, "Hello Raylib");
+	InitWindow(800, 600, "Dragon fly");
 	SearchAndSetResourceDir("resources");
 
 	//Background

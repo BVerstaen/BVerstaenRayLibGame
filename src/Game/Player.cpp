@@ -2,7 +2,7 @@
 #include "Background.h"
 #include <stdexcept>
 #include <iostream>
-
+#include <algorithm>
 
 
 Player::Player(Background* background)
@@ -12,7 +12,7 @@ Player::Player(Background* background)
 
 	m_background = background;
 	m_position = Vector2(100, 300);
-	m_verticalGravity = 1;
+	m_verticalVelocity = 1;
 
 	m_idleTexture = LoadTexture("Sprites\\Player\\Player_Idle.png");
 	m_flapTexture = LoadTexture("Sprites\\Player\\Player_Flap.png");
@@ -22,18 +22,23 @@ Player::Player(Background* background)
 	m_defaultSpeed = m_background->GetSpeed();
 	m_fastSpeed = m_background->GetSpeed() * 1.5f;
 	m_isChangingSpeed = false;
+
+	m_flapAnimationTimer = 0.1f;
+	m_currentFlapAnimationTimer = 0.0f;
 }
 
 void Player::UpdateLogic(float deltaTime)
 {
-	//Process input
+	//Flap logic
 	if (IsKeyPressed(KEY_UP))
 	{
-
+		m_verticalVelocity -= 100.0f;
+		m_currentFlapAnimationTimer = m_flapAnimationTimer;
 	}
 	if (IsKeyPressed(KEY_DOWN))
 	{
-
+		m_verticalVelocity += 100.0f;
+		m_currentFlapAnimationTimer = m_flapAnimationTimer;
 	}
 
 	//Change speed
@@ -58,12 +63,23 @@ void Player::UpdateLogic(float deltaTime)
 		m_background->SetSpeed(m_defaultSpeed);
 		m_isChangingSpeed = false;
 	}
+	
+	//Physics logic
+	m_verticalVelocity += deltaTime * 9.8f;
+	m_position.y = std::max(0.0f, m_position.y + deltaTime * m_verticalVelocity);
 
-	m_position.y += deltaTime * m_verticalGravity;
+	//Animation logic
+	if(IsFlapping())
+		m_currentFlapAnimationTimer -= deltaTime;
 }
 
 void Player::UpdateRender(float deltaTime)
 {
-	DrawTextureV(m_idleTexture, m_position, WHITE);
 
+	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
+}
+
+const bool Player::IsFlapping() const
+{
+	return m_currentFlapAnimationTimer > 0.0f;
 }

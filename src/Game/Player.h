@@ -12,16 +12,20 @@ public:
 	void UpdateRender(float deltaTime);
 
 private:
+	const bool IsFlapping() const;
+
+private:
 	Background* m_background;
 
 	Vector2 m_position;
-	float m_verticalGravity;
-
-
+	float m_verticalVelocity;
+	
 private:
 	Texture m_idleTexture;
 	Texture m_flapTexture;
 	Texture m_deathTexture;
+	float m_currentFlapAnimationTimer;
+	float m_flapAnimationTimer;
 
 	float m_slowSpeed;
 	float m_defaultSpeed;
