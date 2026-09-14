@@ -1,8 +1,22 @@
 #pragma once
 #include "raylib.h"
-
 class Background
 {
+
+private:
+	struct BackgroundData
+	{
+	public:
+		BackgroundData();
+		BackgroundData(Texture tex, float baseSpeed);
+
+	public:
+		Texture BackgroundTexture;
+		Vector2 Position;
+		float SpeedMultiplier;
+		float TextureHalfWidth;
+	};
+
 public:
 	Background();
 	~Background();
@@ -16,17 +30,9 @@ public:
 	void UpdateRender(float deltaTime);
 
 private:
-	Texture m_backgroundLayerTexture;
-	Texture m_foregroundLayerTexture;
-	Texture m_groundLayerTexture;
-
-	Vector2 m_backgroundPosition;
-	Vector2 m_foregroundPosition;
-	Vector2 m_groundPosition;
+	BackgroundData m_backgroundLayer;
+	BackgroundData m_foregroundLayer;
+	BackgroundData m_groundLayer;
 
 	float m_speed;
-	const float m_backgroundSpeedMultiplier;
-	const float m_foregroundSpeedMultiplier;
-	const float m_groundSpeedMultiplier;
-
 };

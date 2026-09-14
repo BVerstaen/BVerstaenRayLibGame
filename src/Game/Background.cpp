@@ -1,21 +1,31 @@
 #include "Background.h"
+#include <cmath>
+#include <iostream>
 
-Background::Background() : m_speed(1.0f), m_backgroundSpeedMultiplier(0.0f), m_foregroundSpeedMultiplier(0.5f), m_groundSpeedMultiplier(1.0f)
+
+Background::BackgroundData::BackgroundData():BackgroundTexture(Texture()), Position(Vector2(0, 0)), SpeedMultiplier(0), TextureHalfWidth(0){}
+
+Background::BackgroundData::BackgroundData(Texture tex, float baseSpeed)
 {
-	m_backgroundLayerTexture = LoadTexture("Sprites\\Background_0.png");
-	m_foregroundLayerTexture = LoadTexture("Sprites\\Background_1.png");
-	m_groundLayerTexture = LoadTexture("Sprites\\Ground.png");
+	BackgroundTexture = tex;
+	Position = Vector2(0, 600 - BackgroundTexture.height);
+	SpeedMultiplier = baseSpeed;
+	TextureHalfWidth = BackgroundTexture.width / 2;
+}
 
-	m_backgroundPosition = Vector2(0,0);
-	m_foregroundPosition = Vector2(0,0);
-	m_groundPosition = Vector2(0,0);
+
+Background::Background() : m_speed(100.0f)
+{
+	m_backgroundLayer = BackgroundData(LoadTexture("Sprites\\Background_0.png"), 0.0f);
+	m_foregroundLayer = BackgroundData(LoadTexture("Sprites\\Background_1.png"), 1.0f);
+	m_groundLayer = BackgroundData(LoadTexture("Sprites\\Ground.png"), 3.0f);
 }
 
 Background::~Background()
 {
-	UnloadTexture(m_backgroundLayerTexture);
-	UnloadTexture(m_foregroundLayerTexture);
-	UnloadTexture(m_groundLayerTexture);
+	UnloadTexture(m_backgroundLayer.BackgroundTexture);
+	UnloadTexture(m_foregroundLayer.BackgroundTexture);
+	UnloadTexture(m_groundLayer.BackgroundTexture);
 }
 
 void Background::SetSpeed(float newSpeed)
@@ -25,14 +35,14 @@ void Background::SetSpeed(float newSpeed)
 
 void Background::UpdateLogic(float deltaTime)
 {
-	m_backgroundPosition.x -= deltaTime * (m_speed * m_backgroundSpeedMultiplier);
-	m_foregroundPosition.x -= deltaTime * (m_speed * m_foregroundSpeedMultiplier);
-	m_groundPosition.x -= deltaTime * (m_speed * m_groundSpeedMultiplier);
+	m_backgroundLayer.Position.x = std::fmod(m_backgroundLayer.Position.x - (deltaTime * (m_speed * m_backgroundLayer.SpeedMultiplier)), m_backgroundLayer.TextureHalfWidth);
+	m_foregroundLayer.Position.x = std::fmod(m_foregroundLayer.Position.x - (deltaTime * (m_speed * m_foregroundLayer.SpeedMultiplier)), m_foregroundLayer.TextureHalfWidth);
+	m_groundLayer.Position.x = std::fmod(m_groundLayer.Position.x - (deltaTime * (m_speed * m_groundLayer.SpeedMultiplier)), m_groundLayer.TextureHalfWidth);
 }
 
 void Background::UpdateRender(float deltaTime)
 {
-	DrawTexture(m_backgroundLayerTexture, m_backgroundPosition.x, m_backgroundPosition.y, WHITE);
-	DrawTexture(m_foregroundLayerTexture, m_foregroundPosition.x, m_foregroundPosition.y, WHITE);
-	DrawTexture(m_groundLayerTexture, m_groundPosition.x, m_groundPosition.y, WHITE);
+	DrawTextureV(m_backgroundLayer.BackgroundTexture, m_backgroundLayer.Position, WHITE);
+	DrawTextureV(m_foregroundLayer.BackgroundTexture, m_foregroundLayer.Position, WHITE);
+	DrawTextureV(m_groundLayer.BackgroundTexture, m_groundLayer.Position, WHITE);
 }

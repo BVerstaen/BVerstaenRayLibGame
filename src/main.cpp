@@ -14,7 +14,7 @@ int main ()
 
 	//Background
 	Background background;
-	
+
 	//Player
 	Texture player = LoadTexture("Sprites\\player.png");
 	Vector2 playerPos = Vector2(100,100);
