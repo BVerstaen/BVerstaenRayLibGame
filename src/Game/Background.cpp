@@ -33,6 +33,11 @@ const float Background::GetSpeed() const
 	return m_speed;
 }
 
+const float Background::GetGroundLayerSpeed() const
+{
+	return m_speed * m_groundLayer.SpeedMultiplier;
+}
+
 void Background::SetSpeed(float newSpeed)
 {
 	m_speed = newSpeed;

@@ -5,19 +5,21 @@
 #include <Game/Player.h>
 #include <Core/ScoreSystem.h>
 #include <Core/GameFont.h>
+#include <Game/Target/TargetManager.h>
 
 int main ()
 {
 	//Init window & ressources
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-	InitWindow(800, 600, "Dragon fly");
+	InitWindow(800, 600, "Dragon rampage");
 	SearchAndSetResourceDir("resources");
 
 	GameFont font;
-	
+	ScoreSystem scoreSys = ScoreSystem();
+
 	Background background;
 	Player player = Player(&background);
-	ScoreSystem scoreSys = ScoreSystem();
+	TargetManager targetManager = TargetManager();
 
 
 	scoreSys.ResetScore();
@@ -40,8 +42,6 @@ int main ()
 
 		background.UpdateRender(deltaTime);
 		player.UpdateRender(deltaTime);
-		font.PrintText(std::to_string(player.m_position.y), Vector2(30, 30));
-
 		font.PrintText(std::to_string(scoreSys.CurrentScore), Vector2(30, 10));
 		EndDrawing();
 	}

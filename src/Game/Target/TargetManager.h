@@ -1,0 +1,29 @@
+#pragma once
+
+#include <vector>
+#include "raylib.h"
+#include "Target.h"
+
+class TargetManager
+{
+public:
+	TargetManager();
+	~TargetManager();
+	TargetManager(const TargetManager& targetManager) = delete;
+	TargetManager& operator=(const TargetManager& targetManager) = delete;
+	TargetManager(TargetManager&& targetManager) noexcept = delete;
+	TargetManager& operator=(TargetManager&& targetManager) noexcept = delete;
+
+public:
+	void UpdateLogic(float deltaTime, float groundSpeed);
+	void UpdateRender(float deltaTime);
+
+private:
+	std::vector<Target> m_targetList;
+	std::vector<Texture> m_targetTextures;
+
+	float m_spawnDelay;
+	Vector2 m_spawnDelayRange;
+
+	Vector2 m_spawnPosition;
+};

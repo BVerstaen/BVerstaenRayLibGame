@@ -306,6 +306,8 @@
     <ClInclude Include="src\Game\Background.h" />
     <ClInclude Include="src\Game\Player.h" />
     <ClInclude Include="src\Game\ScoreUI.h" />
+    <ClInclude Include="src\Game\Target\Target.h" />
+    <ClInclude Include="src\Game\Target\TargetManager.h" />
     <ClInclude Include="src\resource_dir.h" />
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +316,8 @@
     <ClCompile Include="src\Game\Background.cpp" />
     <ClCompile Include="src\Game\Player.cpp" />
     <ClCompile Include="src\Game\ScoreUI.cpp" />
+    <ClCompile Include="src\Game\Target\Target.cpp" />
+    <ClCompile Include="src\Game\Target\TargetManager.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +331,12 @@
     <Image Include="resources\Sprites\Background_0.png" />
     <Image Include="resources\Sprites\Background_1.png" />
     <Image Include="resources\Sprites\Ground.png" />
+    <Image Include="resources\Sprites\Hazards\AirHazard_0.png" />
+    <Image Include="resources\Sprites\Hazards\AirHazard_1.png" />
+    <Image Include="resources\Sprites\Hazards\GroundTarget_0.png" />
+    <Image Include="resources\Sprites\Hazards\GroundTarget_1.png" />
+    <Image Include="resources\Sprites\Hazards\GroundTarget_2.png" />
+    <Image Include="resources\Sprites\Player\PlayerProjectile.png" />
     <Image Include="resources\Sprites\Player\Player_Death.png" />
     <Image Include="resources\Sprites\Player\Player_Flap.png" />
     <Image Include="resources\Sprites\Player\Player_Idle.png" />

@@ -10,6 +10,9 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{323BAF0A-9E51-ADA0-E7C8-38C2531E7E28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Target">
+      <UniqueIdentifier>{E87AB88D-D49F-070E-FDEA-EC9DE96E062C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{21EB8090-0D4E-1035-B6D3-48EBA215DCB7}</UniqueIdentifier>
     </Filter>
@@ -19,6 +22,9 @@
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{6A21415D-D637-3FF3-1FAF-CA148B04107B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Target">
+      <UniqueIdentifier>{2032D206-0C57-2187-35A2-0617212620A5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Game Resource Files">
       <UniqueIdentifier>{BAF00917-2652-E724-AFBF-2DD71B201EE4}</UniqueIdentifier>
     </Filter>
@@ -27,6 +33,9 @@
     </Filter>
     <Filter Include="Game Resource Files\Sprites">
       <UniqueIdentifier>{331128BF-9F1E-56A5-2805-52909411225C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Resource Files\Sprites\Hazards">
+      <UniqueIdentifier>{4FF505D1-BBAE-707B-440E-8B55B0C626EB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game Resource Files\Sprites\Player">
       <UniqueIdentifier>{EFCACF76-DB06-D3E0-4419-EBD730747BFB}</UniqueIdentifier>
@@ -51,6 +60,12 @@
     <ClInclude Include="src\Game\ScoreUI.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Target\Target.h">
+      <Filter>Header Files\Game\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Target\TargetManager.h">
+      <Filter>Header Files\Game\Target</Filter>
+    </ClInclude>
     <ClInclude Include="src\resource_dir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -70,6 +85,12 @@
     </ClCompile>
     <ClCompile Include="src\Game\ScoreUI.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Target\Target.cpp">
+      <Filter>Source Files\Game\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Target\TargetManager.cpp">
+      <Filter>Source Files\Game\Target</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
@@ -97,6 +118,24 @@
     </Image>
     <Image Include="resources\Sprites\Ground.png">
       <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Hazards\AirHazard_0.png">
+      <Filter>Game Resource Files\Sprites\Hazards</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Hazards\AirHazard_1.png">
+      <Filter>Game Resource Files\Sprites\Hazards</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Hazards\GroundTarget_0.png">
+      <Filter>Game Resource Files\Sprites\Hazards</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Hazards\GroundTarget_1.png">
+      <Filter>Game Resource Files\Sprites\Hazards</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Hazards\GroundTarget_2.png">
+      <Filter>Game Resource Files\Sprites\Hazards</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Player\PlayerProjectile.png">
+      <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
     <Image Include="resources\Sprites\Player\Player_Death.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>

@@ -76,14 +76,14 @@ void Player::UpdateLogic(float deltaTime)
 		m_position.y = 0;
 		m_verticalVelocity = 0;
 	}
-
-	//Animation logic
-	if(IsFlapping())
-		m_currentFlapAnimationTimer -= deltaTime;
 }
 
 void Player::UpdateRender(float deltaTime)
 {
+	//Animation logic
+	if (IsFlapping())
+		m_currentFlapAnimationTimer -= deltaTime;
+
 	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
 }
 

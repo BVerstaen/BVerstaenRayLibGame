@@ -27,6 +27,7 @@ public:
 	Background& operator=(Background&& background) noexcept = delete;
 
 	const float GetSpeed() const;
+	const float GetGroundLayerSpeed() const;
 	void SetSpeed(float newSpeed);
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
