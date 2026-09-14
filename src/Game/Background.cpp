@@ -28,6 +28,11 @@ Background::~Background()
 	UnloadTexture(m_groundLayer.BackgroundTexture);
 }
 
+const float Background::GetSpeed() const
+{
+	return m_speed;
+}
+
 void Background::SetSpeed(float newSpeed)
 {
 	m_speed = newSpeed;

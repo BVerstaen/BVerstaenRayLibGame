@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+
 class Background
 {
 
@@ -25,6 +26,7 @@ public:
 	Background(Background&& background) noexcept = delete;
 	Background& operator=(Background&& background) noexcept = delete;
 
+	const float GetSpeed() const;
 	void SetSpeed(float newSpeed);
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
