@@ -3,19 +3,17 @@
 
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 
+#include "Game/Background.h"
+
 int main ()
 {
 	// Tell the window to use vsync and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-
-	// Create the window and OpenGL context
 	InitWindow(800, 600, "Hello Raylib");
-
-	// Utility function from resource_dir.h to find the resources folder and set it as the current working directory so we can load from it
 	SearchAndSetResourceDir("resources");
 
-	// Load a texture from the resources directory
-	Texture background = LoadTexture("Sprites\\Background.png");
+	//Background
+	Background background;
 	
 	//Player
 	Texture player = LoadTexture("Sprites\\player.png");
@@ -27,7 +25,9 @@ int main ()
 	{
 		float deltaTime = GetFrameTime();
 
+
 		//LOGIC UPDATE
+		background.UpdateLogic(deltaTime);
 		if (IsKeyDown(KEY_LEFT))
 			playerPos.x -= playerSpeed;
 		else if (IsKeyDown(KEY_RIGHT))
@@ -40,19 +40,15 @@ int main ()
 		//RENDER UPDATE
 		BeginDrawing();
 		ClearBackground(BLACK);
+		background.UpdateRender(deltaTime);
 
-		// draw some text using the default font
-		DrawText("Hello Raylib", 200,200,20,WHITE);
-
-		// draw our texture to the screen
-		DrawTexture(background, 0, 0, WHITE);
 		DrawTexture(player, playerPos.x, playerPos.y, WHITE);
 		
 		EndDrawing();
 	}
 
 	// CLEAN UP
-	UnloadTexture(background);
+	//UnloadTexture(background);
 	CloseWindow();
 	return 0;
 }
