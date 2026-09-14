@@ -7,15 +7,15 @@ class Background
 private:
 	struct BackgroundData
 	{
-	public:
-		BackgroundData();
-		BackgroundData(Texture tex, float baseSpeed);
+		public:
+			BackgroundData();
+			BackgroundData(Texture tex, float baseSpeed);
 
-	public:
-		Texture BackgroundTexture;
-		Vector2 Position;
-		float SpeedMultiplier;
-		float TextureHalfWidth;
+		public:
+			Texture BackgroundTexture;
+			Vector2 Position;
+			float SpeedMultiplier;
+			float TextureHalfWidth;
 	};
 
 public:

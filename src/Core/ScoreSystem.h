@@ -6,15 +6,23 @@ class ScoreSystem
 {
 public:
 	ScoreSystem();
+
+public:
+	void UpdateScore(float deltaTime);
+	void ResetScore();
 	bool AddScoreToHighScore();
+	int CurrentScore;
+
+private:
+	float m_gameTimer;
+
+private:
 	void SaveHighScore();
 	void LoadHighScore();
 
 public :
-	int CurrentScore;
 	std::vector<int> HighScoreList;
 	const int HighScoreLimit;
-
 private:
 	const std::string m_highScoreFileName;
 };

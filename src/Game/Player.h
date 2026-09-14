@@ -8,6 +8,10 @@ class Player
 public:
 	Player(Background* background);
 	~Player();
+	Player(const Player& player) = delete;
+	Player& operator=(const Player& player) = delete;
+	Player(Player&& player) noexcept = delete;
+	Player& operator=(Player&& player) noexcept = delete;
 
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);

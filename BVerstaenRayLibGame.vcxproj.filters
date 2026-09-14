@@ -4,17 +4,26 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{E9C7FDCE-D52A-8D73-7EB0-C5296AF258F6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{E145AD0A-4D5C-ABA0-96D3-36C202297C28}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{323BAF0A-9E51-ADA0-E7C8-38C2531E7E28}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{21EB8090-0D4E-1035-B6D3-48EBA215DCB7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{192C3F5D-8542-3DF3-CEB9-C8143A0F0E7B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{6A21415D-D637-3FF3-1FAF-CA148B04107B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game Resource Files">
       <UniqueIdentifier>{BAF00917-2652-E724-AFBF-2DD71B201EE4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Resource Files\Font">
+      <UniqueIdentifier>{003E1A70-EC62-69F0-15AE-4E800132680E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game Resource Files\Sprites">
       <UniqueIdentifier>{331128BF-9F1E-56A5-2805-52909411225C}</UniqueIdentifier>
@@ -27,13 +36,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\GameFont.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\ScoreSystem.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Background.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\ScoreSystem.h">
+    <ClInclude Include="src\Game\ScoreUI.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\resource_dir.h">
@@ -41,13 +56,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\GameFont.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\ScoreSystem.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\Background.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Player.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\ScoreSystem.cpp">
+    <ClCompile Include="src\Game\ScoreUI.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
@@ -55,6 +76,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\Font\GameFont.ttf">
+      <Filter>Game Resource Files\Font</Filter>
+    </None>
     <None Include="src\icon.ico">
       <Filter>Windows Resource Files</Filter>
     </None>

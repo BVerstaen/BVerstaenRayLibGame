@@ -301,18 +301,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\GameFont.h" />
+    <ClInclude Include="src\Core\ScoreSystem.h" />
     <ClInclude Include="src\Game\Background.h" />
     <ClInclude Include="src\Game\Player.h" />
-    <ClInclude Include="src\Game\ScoreSystem.h" />
+    <ClInclude Include="src\Game\ScoreUI.h" />
     <ClInclude Include="src\resource_dir.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\GameFont.cpp" />
+    <ClCompile Include="src\Core\ScoreSystem.cpp" />
     <ClCompile Include="src\Game\Background.cpp" />
     <ClCompile Include="src\Game\Player.cpp" />
-    <ClCompile Include="src\Game\ScoreSystem.cpp" />
+    <ClCompile Include="src\Game\ScoreUI.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\Font\GameFont.ttf" />
     <None Include="src\icon.ico" />
   </ItemGroup>
   <ItemGroup>
