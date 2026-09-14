@@ -1,10 +1,9 @@
 #include "PlayerProjectile.h"
 #include "raymath.h"
 
-PlayerProjectile::PlayerProjectile(): m_projectileLimit(5), m_projectileDirection(Vector2(0.5f,0.5f)), m_projectileSpeed(10.0f)
+PlayerProjectile::PlayerProjectile(): m_projectileLimit(5), m_projectileDirection(Vector2(0.5f,0.5f)), m_projectileSpeed(300.0f)
 {
 	m_projectileTexture = LoadTexture("Sprites\\Player\\PlayerProjectile.png");
-	m_projectilePositions.resize(m_projectileLimit);
 }
 
 PlayerProjectile::~PlayerProjectile()
@@ -25,7 +24,7 @@ void PlayerProjectile::UpdateLogic(float deltaTime)
 	auto It = m_projectilePositions.begin();
 	while (It != m_projectilePositions.end())
 	{
-		Vector2Add(*It, cachedVectorIncrement);
+		*It = Vector2Add(*It, cachedVectorIncrement);
 		if (It->x >= 800 || It->y >= 600)
 			It = m_projectilePositions.erase(It);
 		else

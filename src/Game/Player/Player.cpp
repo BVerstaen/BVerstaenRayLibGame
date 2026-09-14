@@ -102,3 +102,8 @@ const bool Player::IsFlapping() const
 {
 	return m_currentFlapAnimationTimer > 0.0f;
 }
+
+const Vector2 Player::GetPosition() const
+{
+	return m_position;
+}

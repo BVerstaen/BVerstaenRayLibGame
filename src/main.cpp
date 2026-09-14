@@ -36,7 +36,7 @@ int main ()
 
 		//TODO -> move to player
 		if (IsKeyPressed(KEY_SPACE))
-			playerProj.SpawnProjectile();
+			playerProj.SpawnProjectile(player.GetPosition());
 		playerProj.UpdateLogic(deltaTime);
 		targetManager.UpdateLogic(deltaTime, background.GetGroundLayerSpeed());
 		scoreSys.UpdateScore(deltaTime, background.GetSpeed());
@@ -54,7 +54,7 @@ int main ()
 		playerProj.UpdateRender(deltaTime);
 
 
-		font.PrintText(std::to_string(playerProj.m_projectilePositions.size()), Vector2(30, 10));
+		font.PrintText(std::to_string(playerProj.m_projectilePositions.size()), Vector2(30, 50));
 		font.PrintText(std::to_string(scoreSys.CurrentScore), Vector2(30, 10));
 
 		EndDrawing();
