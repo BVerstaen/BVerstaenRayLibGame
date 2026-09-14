@@ -8,7 +8,7 @@ public:
 	ScoreSystem();
 
 public:
-	void UpdateScore(float deltaTime);
+	void UpdateScore(float deltaTime, float backgroundSpeed);
 	void ResetScore();
 	bool AddScoreToHighScore();
 	int CurrentScore;

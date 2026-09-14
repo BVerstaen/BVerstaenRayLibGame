@@ -48,21 +48,21 @@ void Player::UpdateLogic(float deltaTime)
 	//Change speed
 	if (IsKeyDown(KEY_LEFT))
 	{
-		if (!m_isChangingSpeed)
+		if (m_isChangingSpeed != -1)
 		{
 			m_background->SetSpeed(m_slowSpeed);
-			m_isChangingSpeed = true;
+			m_isChangingSpeed = -1;
 		}
 	}
 	else if (IsKeyDown(KEY_RIGHT))
 	{
-		if (!m_isChangingSpeed)
+		if (m_isChangingSpeed != 1)
 		{
 			m_background->SetSpeed(m_fastSpeed);
-			m_isChangingSpeed = true;
+			m_isChangingSpeed = 1;
 		}
 	}
-	else if (m_isChangingSpeed)
+	else if (m_isChangingSpeed != 0)
 	{
 		m_background->SetSpeed(m_defaultSpeed);
 		m_isChangingSpeed = false;
@@ -77,7 +77,6 @@ void Player::UpdateLogic(float deltaTime)
 		m_verticalVelocity = 0;
 	}
 
-
 	//Animation logic
 	if(IsFlapping())
 		m_currentFlapAnimationTimer -= deltaTime;
@@ -85,7 +84,6 @@ void Player::UpdateLogic(float deltaTime)
 
 void Player::UpdateRender(float deltaTime)
 {
-
 	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
 }
 
@@ -93,7 +91,6 @@ const bool Player::CheckDeathCollisions()
 {
 	//Ground collision
 	const float groundYPosition = 430.0f;
-
 	if (m_position.y >= groundYPosition)
 		return true;
 

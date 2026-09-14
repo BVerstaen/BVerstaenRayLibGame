@@ -6,9 +6,9 @@ ScoreSystem::ScoreSystem() :CurrentScore(0), HighScoreLimit(3), HighScoreList(),
 	LoadHighScore();
 }
 
-void ScoreSystem::UpdateScore(float deltaTime)
+void ScoreSystem::UpdateScore(float deltaTime, float backgroundSpeed)
 {
-	m_gameTimer += deltaTime;
+	m_gameTimer += deltaTime * (backgroundSpeed / 100.0f);
 	if (m_gameTimer >= 1.0f)
 	{
 		++CurrentScore;

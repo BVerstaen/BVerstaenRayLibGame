@@ -29,7 +29,7 @@ int main ()
 		//LOGIC UPDATE
 		background.UpdateLogic(deltaTime);
 		player.UpdateLogic(deltaTime);
-		scoreSys.UpdateScore(deltaTime);
+		scoreSys.UpdateScore(deltaTime, background.GetSpeed());
 
 		if (player.CheckDeathCollisions())
 			break;

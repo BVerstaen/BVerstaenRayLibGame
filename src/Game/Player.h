@@ -39,5 +39,5 @@ private:
 	float m_slowSpeed;
 	float m_defaultSpeed;
 	float m_fastSpeed;
-	bool m_isChangingSpeed;
+	int m_isChangingSpeed;
 };
