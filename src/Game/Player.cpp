@@ -5,14 +5,11 @@
 #include <algorithm>
 
 
-Player::Player(Background* background)
+Player::Player(Background* background) : m_position(Vector2(100, 300)), m_verticalVelocity(1), m_gravityForce(50.0f)
 {
 	if (!background)
 		throw std::runtime_error("No valid background");
-
 	m_background = background;
-	m_position = Vector2(100, 300);
-	m_verticalVelocity = 1;
 
 	m_idleTexture = LoadTexture("Sprites\\Player\\Player_Idle.png");
 	m_flapTexture = LoadTexture("Sprites\\Player\\Player_Flap.png");
@@ -72,8 +69,14 @@ void Player::UpdateLogic(float deltaTime)
 	}
 	
 	//Physics logic
-	m_verticalVelocity += deltaTime * 9.8f;
-	m_position.y = std::max(0.0f, m_position.y + deltaTime * m_verticalVelocity);
+	m_verticalVelocity += deltaTime * m_gravityForce;
+	m_position.y += deltaTime * m_verticalVelocity;
+	if (m_position.y < 0)
+	{
+		m_position.y = 0;
+		m_verticalVelocity = 0;
+	}
+
 
 	//Animation logic
 	if(IsFlapping())
@@ -84,6 +87,17 @@ void Player::UpdateRender(float deltaTime)
 {
 
 	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
+}
+
+const bool Player::CheckDeathCollisions()
+{
+	//Ground collision
+	const float groundYPosition = 430.0f;
+
+	if (m_position.y >= groundYPosition)
+		return true;
+
+	return false;
 }
 
 const bool Player::IsFlapping() const

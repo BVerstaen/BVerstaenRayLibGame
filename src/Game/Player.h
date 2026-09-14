@@ -16,15 +16,19 @@ public:
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
 
+	const bool CheckDeathCollisions();
+
 private:
 	const bool IsFlapping() const;
 
 private:
 	Background* m_background;
 
+public:
 	Vector2 m_position;
 	float m_verticalVelocity;
-	
+	float m_gravityForce;
+
 private:
 	Texture m_idleTexture;
 	Texture m_flapTexture;
