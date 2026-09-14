@@ -15,33 +15,42 @@ int main ()
 	SearchAndSetResourceDir("resources");
 
 	// Load a texture from the resources directory
-	Texture wabbit = LoadTexture("wabbit_alpha.png");
+	Texture background = LoadTexture("Sprites\\Background.png");
 	
+	//Player
+	Texture player = LoadTexture("Sprites\\player.png");
+	Vector2 playerPos = Vector2(100,100);
+	constexpr float playerSpeed = 1.0f;
+
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
 	{
+		//LOGIC UPDATE
+		if (IsKeyDown(KEY_LEFT))
+			playerPos.x -= playerSpeed;
+		else if (IsKeyDown(KEY_RIGHT))
+			playerPos.x += playerSpeed;
+		if (IsKeyDown(KEY_UP))
+			playerPos.y -= playerSpeed;
+		if (IsKeyDown(KEY_DOWN))
+			playerPos.y += playerSpeed;
 
 		//RENDER UPDATE
 		BeginDrawing();
-
-		// Setup the back buffer for drawing (clear color and depth buffers)
 		ClearBackground(BLACK);
 
 		// draw some text using the default font
 		DrawText("Hello Raylib", 200,200,20,WHITE);
 
 		// draw our texture to the screen
-		DrawTexture(wabbit, 400, 200, WHITE);
+		DrawTexture(background, 0, 0, WHITE);
+		DrawTexture(player, playerPos.x, playerPos.y, WHITE);
 		
-		// end the frame and get ready for the next one  (display frame, poll input, etc...)
 		EndDrawing();
 	}
 
-	// cleanup
-	// unload our texture so it can be cleaned up
-	UnloadTexture(wabbit);
-
-	// destroy the window and cleanup the OpenGL context
+	// CLEAN UP
+	UnloadTexture(background);
 	CloseWindow();
 	return 0;
 }
