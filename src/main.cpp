@@ -26,15 +26,6 @@ int main ()
 		background.UpdateLogic(deltaTime);
 		player.UpdateLogic(deltaTime);
 
-		//if (IsKeyDown(KEY_LEFT))
-		//	playerPos.x -= playerSpeed;
-		//else if (IsKeyDown(KEY_RIGHT))
-		//	playerPos.x += playerSpeed;
-		//if (IsKeyDown(KEY_UP))
-		//	playerPos.y -= playerSpeed;
-		//if (IsKeyDown(KEY_DOWN))
-		//	playerPos.y += playerSpeed;
-
 		//RENDER UPDATE
 		BeginDrawing();
 		ClearBackground(BLACK);
@@ -45,8 +36,6 @@ int main ()
 		EndDrawing();
 	}
 
-	// CLEAN UP
-	//UnloadTexture(background);
 	CloseWindow();
 	return 0;
 }

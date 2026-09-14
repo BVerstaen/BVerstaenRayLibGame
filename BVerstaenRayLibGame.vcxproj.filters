@@ -33,6 +33,9 @@
     <ClInclude Include="src\Game\Player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\ScoreSystem.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
     <ClInclude Include="src\resource_dir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -42,6 +45,9 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Player.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\ScoreSystem.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
@@ -71,10 +77,10 @@
     <Image Include="resources\Sprites\Player\Player_Death.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
-    <Image Include="resources\Sprites\Player\Player_Idle.png">
+    <Image Include="resources\Sprites\Player\Player_Flap.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
-    <Image Include="resources\Sprites\Player\Player_flap.png">
+    <Image Include="resources\Sprites\Player\Player_Idle.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
   </ItemGroup>

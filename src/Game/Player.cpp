@@ -27,6 +27,13 @@ Player::Player(Background* background)
 	m_currentFlapAnimationTimer = 0.0f;
 }
 
+Player::~Player()
+{
+	UnloadTexture(m_idleTexture);
+	UnloadTexture(m_flapTexture);
+	UnloadTexture(m_deathTexture);
+}
+
 void Player::UpdateLogic(float deltaTime)
 {
 	//Flap logic

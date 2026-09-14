@@ -303,11 +303,13 @@
   <ItemGroup>
     <ClInclude Include="src\Game\Background.h" />
     <ClInclude Include="src\Game\Player.h" />
+    <ClInclude Include="src\Game\ScoreSystem.h" />
     <ClInclude Include="src\resource_dir.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Background.cpp" />
     <ClCompile Include="src\Game\Player.cpp" />
+    <ClCompile Include="src\Game\ScoreSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -321,8 +323,8 @@
     <Image Include="resources\Sprites\Background_1.png" />
     <Image Include="resources\Sprites\Ground.png" />
     <Image Include="resources\Sprites\Player\Player_Death.png" />
+    <Image Include="resources\Sprites\Player\Player_Flap.png" />
     <Image Include="resources\Sprites\Player\Player_Idle.png" />
-    <Image Include="resources\Sprites\Player\Player_flap.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="raylib.vcxproj">

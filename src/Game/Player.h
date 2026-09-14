@@ -7,6 +7,7 @@ class Player
 {
 public:
 	Player(Background* background);
+	~Player();
 
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
