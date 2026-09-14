@@ -31,6 +31,7 @@ int main ()
 		//LOGIC UPDATE
 		background.UpdateLogic(deltaTime);
 		player.UpdateLogic(deltaTime);
+		targetManager.UpdateLogic(deltaTime, background.GetGroundLayerSpeed());
 		scoreSys.UpdateScore(deltaTime, background.GetSpeed());
 
 		if (player.CheckDeathCollisions())
@@ -41,6 +42,7 @@ int main ()
 		ClearBackground(BLACK);
 
 		background.UpdateRender(deltaTime);
+		targetManager.UpdateRender(deltaTime);
 		player.UpdateRender(deltaTime);
 		font.PrintText(std::to_string(scoreSys.CurrentScore), Vector2(30, 10));
 		EndDrawing();

@@ -1,6 +1,6 @@
 #include "Target.h"
 
-Target::Target(const Texture tex, Vector2 basePosition)
+Target::Target(Texture tex, Vector2 basePosition)
 {
 	m_targetTexture = tex;
 	m_position = basePosition;

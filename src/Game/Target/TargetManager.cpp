@@ -1,9 +1,10 @@
 #include "TargetManager.h"
 #include <string>
+#include <random>
 
-TargetManager::TargetManager():m_spawnDelayRange(Vector2(3.0f,5.0f)), m_spawnPosition(Vector2(928,302))
+TargetManager::TargetManager():m_spawnDelayRange(Vector2(.25f,0.5f)), m_spawnPosition(Vector2(928,474))
 {
-	m_spawnDelay = GetRandomValue(m_spawnDelayRange.x, m_spawnDelayRange.y);
+	m_spawnDelay = GetRandomDelay();
 
 	//Add textures
 	const int targetNumber = 3;
@@ -28,16 +29,26 @@ TargetManager::~TargetManager()
 	}
 }
 
+const float TargetManager::GetRandomDelay() const
+{
+	//TODO -> Use proper Random class
+	std::mt19937 mt = std::mt19937();
+	std::uniform_real_distribution<> dis(m_spawnDelayRange.x, m_spawnDelayRange.y);
+	return dis(mt);
+}
+
 void TargetManager::UpdateLogic(float deltaTime, float groundSpeed)
 {
 	//Delay logic
 	m_spawnDelay -= deltaTime;
+	TraceLog(LOG_INFO, "[%f]", m_spawnDelay);
+
 	if (m_spawnDelay <= 0)
 	{
-		m_spawnDelay = GetRandomValue(m_spawnDelayRange.x, m_spawnDelayRange.y);
+		m_spawnDelay = GetRandomDelay();
 
 		//Spawn new target
-		m_targetList.push_back(Target(m_targetTextures[GetRandomValue(0, m_targetTextures.size())], m_spawnPosition));
+		m_targetList.push_back(Target(m_targetTextures[GetRandomValue(0, m_targetTextures.size() - 1)], m_spawnPosition));
 	}
 
 	//TargetLogic
@@ -46,6 +57,8 @@ void TargetManager::UpdateLogic(float deltaTime, float groundSpeed)
 	{
 		if (targetListIT->UpdateLogic(deltaTime, groundSpeed))
 			targetListIT = m_targetList.erase(targetListIT);
+		else
+			targetListIT++;
 	}
 }
 

@@ -5,7 +5,7 @@
 class Target 
 {
 public:
-	Target(const Texture tex, Vector2 basePosition);
+	Target(Texture tex, Vector2 basePosition);
 
 	bool UpdateLogic(float deltaTime, float groundSpeed);
 	void UpdateRender(float deltaTime);
