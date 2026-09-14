@@ -2,7 +2,7 @@
 #include <string>
 #include <random>
 
-TargetManager::TargetManager():m_spawnDelayRange(Vector2(.25f,0.5f)), m_spawnPosition(Vector2(928,474))
+TargetManager::TargetManager():m_spawnDelayRange(Vector2(1.0f,3.0f)), m_spawnPosition(Vector2(928,474))
 {
 	m_spawnDelay = GetRandomDelay();
 
@@ -37,11 +37,11 @@ const float TargetManager::GetRandomDelay() const
 	return dis(mt);
 }
 
-void TargetManager::UpdateLogic(float deltaTime, float groundSpeed)
+void TargetManager::UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed)
 {
 	//Delay logic
-	m_spawnDelay -= deltaTime;
-	TraceLog(LOG_INFO, "[%f]", m_spawnDelay);
+	float speedMultiplier = (backgroundSpeed / 100.0f);
+	m_spawnDelay -= deltaTime * speedMultiplier;
 
 	if (m_spawnDelay <= 0)
 	{
@@ -51,14 +51,14 @@ void TargetManager::UpdateLogic(float deltaTime, float groundSpeed)
 		m_targetList.push_back(Target(m_targetTextures[GetRandomValue(0, m_targetTextures.size() - 1)], m_spawnPosition));
 	}
 
-	//TargetLogic
-	auto targetListIT = m_targetList.begin();
-	while (targetListIT != m_targetList.end())
+	//Targe logic (movement & destruction)
+	auto It = m_targetList.begin();
+	while (It != m_targetList.end())
 	{
-		if (targetListIT->UpdateLogic(deltaTime, groundSpeed))
-			targetListIT = m_targetList.erase(targetListIT);
+		if (It->UpdateLogic(deltaTime, groundSpeed))
+			It = m_targetList.erase(It);
 		else
-			targetListIT++;
+			It++;
 	}
 }
 
@@ -67,5 +67,38 @@ void TargetManager::UpdateRender(float deltaTime)
 	for (Target target : m_targetList)
 	{
 		target.UpdateRender(deltaTime);
+	}
+}
+
+void TargetManager::UpdateCollisions(const std::vector<Vector2>& projectileList, const Vector2& projectileSize)
+{
+	const float minimumYPos = m_spawnPosition.y;
+	
+	//Cache rect because sizes are the same
+	Rectangle currentProjectileRect = Rectangle(0, 0, projectileSize.x, projectileSize.y);
+	Rectangle currentTargetRect = Rectangle(0, 0, 64, 64);
+	for (Vector2 projectilePos : projectileList)
+	{
+		//Don't check projectile still in the air, cause can't be in range
+		if (projectilePos.y <= minimumYPos)
+			continue;
+
+		//Setup rect & check collisions
+		currentProjectileRect.x = projectilePos.x;
+		currentProjectileRect.y = projectilePos.y;
+
+		auto It = m_targetList.begin();
+		while (It != m_targetList.end())
+		{
+			currentTargetRect.x = It->GetPosition().x;
+			currentTargetRect.y = It->GetPosition().y;
+
+			if (CheckCollisionRecs(currentProjectileRect, currentTargetRect))
+			{
+				It = m_targetList.erase(It);
+			}
+			else
+				It++;
+		}
 	}
 }

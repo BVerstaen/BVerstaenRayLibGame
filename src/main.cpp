@@ -38,7 +38,9 @@ int main ()
 		if (IsKeyPressed(KEY_SPACE))
 			playerProj.SpawnProjectile(player.GetPosition());
 		playerProj.UpdateLogic(deltaTime);
-		targetManager.UpdateLogic(deltaTime, background.GetGroundLayerSpeed());
+
+		targetManager.UpdateLogic(deltaTime, background.GetSpeed(), background.GetGroundLayerSpeed());
+		targetManager.UpdateCollisions(playerProj.GetProjectilePositions(), playerProj.GetProjectileSize());
 		scoreSys.UpdateScore(deltaTime, background.GetSpeed());
 
 		if (player.CheckDeathCollisions())
@@ -53,8 +55,6 @@ int main ()
 		player.UpdateRender(deltaTime);
 		playerProj.UpdateRender(deltaTime);
 
-
-		font.PrintText(std::to_string(playerProj.m_projectilePositions.size()), Vector2(30, 50));
 		font.PrintText(std::to_string(scoreSys.CurrentScore), Vector2(30, 10));
 
 		EndDrawing();

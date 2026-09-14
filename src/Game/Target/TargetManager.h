@@ -18,8 +18,9 @@ private:
 	const float GetRandomDelay() const;
 
 public:
-	void UpdateLogic(float deltaTime, float groundSpeed);
+	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
 	void UpdateRender(float deltaTime);
+	void UpdateCollisions(const std::vector<Vector2>& projectileList, const Vector2& projectileSize);
 
 private:
 	std::vector<Target> m_targetList;

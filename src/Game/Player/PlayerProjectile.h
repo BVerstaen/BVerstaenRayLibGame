@@ -19,12 +19,19 @@ public:
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
 
+public:
+	const std::vector<Vector2>& GetProjectilePositions() const;
+	const Vector2& GetProjectileSize() const;
+
 private:
 	const float m_projectileSpeed;
 	const int m_projectileLimit;
 	Texture m_projectileTexture;
 	Vector2 m_projectileDirection;
+	Vector2 m_projectileSize;
 
-public:
+	const Vector2 m_spawnOffset;
+
+private:
 	std::vector<Vector2> m_projectilePositions;
 };

@@ -11,6 +11,9 @@ public:
 	void UpdateRender(float deltaTime);
 	bool CheckCollisions();
 
+public:
+	const Vector2 GetPosition() const;
+
 private:
 	Texture m_targetTexture;
 	Vector2 m_position;

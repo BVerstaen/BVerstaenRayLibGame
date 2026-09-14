@@ -23,3 +23,8 @@ bool Target::CheckCollisions()
 {
 	return false;
 }
+
+const Vector2 Target::GetPosition() const
+{
+	return m_position;
+}
