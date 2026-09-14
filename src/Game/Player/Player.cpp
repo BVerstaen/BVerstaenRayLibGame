@@ -1,5 +1,6 @@
 #include "Player.h"
-#include "Background.h"
+
+#include <Game/Background.h>
 #include <stdexcept>
 #include <iostream>
 #include <algorithm>

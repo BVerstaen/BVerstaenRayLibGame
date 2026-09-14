@@ -2,10 +2,11 @@
 #include "resource_dir.h"
 
 #include <Game/Background.h>
-#include <Game/Player.h>
+#include <Game/Player/Player.h>
 #include <Core/ScoreSystem.h>
 #include <Core/GameFont.h>
 #include <Game/Target/TargetManager.h>
+#include <Game/Player/PlayerProjectile.h>
 
 int main ()
 {
@@ -19,6 +20,7 @@ int main ()
 
 	Background background;
 	Player player = Player(&background);
+	PlayerProjectile playerProj = PlayerProjectile();
 	TargetManager targetManager = TargetManager();
 
 
@@ -31,6 +33,11 @@ int main ()
 		//LOGIC UPDATE
 		background.UpdateLogic(deltaTime);
 		player.UpdateLogic(deltaTime);
+
+		//TODO -> move to player
+		if (IsKeyPressed(KEY_SPACE))
+			playerProj.SpawnProjectile();
+		playerProj.UpdateLogic(deltaTime);
 		targetManager.UpdateLogic(deltaTime, background.GetGroundLayerSpeed());
 		scoreSys.UpdateScore(deltaTime, background.GetSpeed());
 
@@ -44,7 +51,12 @@ int main ()
 		background.UpdateRender(deltaTime);
 		targetManager.UpdateRender(deltaTime);
 		player.UpdateRender(deltaTime);
+		playerProj.UpdateRender(deltaTime);
+
+
+		font.PrintText(std::to_string(playerProj.m_projectilePositions.size()), Vector2(30, 10));
 		font.PrintText(std::to_string(scoreSys.CurrentScore), Vector2(30, 10));
+
 		EndDrawing();
 	}
 

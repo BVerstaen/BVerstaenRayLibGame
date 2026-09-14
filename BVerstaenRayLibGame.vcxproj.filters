@@ -10,6 +10,9 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{323BAF0A-9E51-ADA0-E7C8-38C2531E7E28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Player">
+      <UniqueIdentifier>{0EE02185-FA04-7105-2350-56950FD46F23}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Game\Target">
       <UniqueIdentifier>{E87AB88D-D49F-070E-FDEA-EC9DE96E062C}</UniqueIdentifier>
     </Filter>
@@ -21,6 +24,9 @@
     </Filter>
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{6A21415D-D637-3FF3-1FAF-CA148B04107B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Player">
+      <UniqueIdentifier>{46973BFE-32BC-8A7E-5B07-700E478B899C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Game\Target">
       <UniqueIdentifier>{2032D206-0C57-2187-35A2-0617212620A5}</UniqueIdentifier>
@@ -54,8 +60,11 @@
     <ClInclude Include="src\Game\Background.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Player.h">
-      <Filter>Header Files\Game</Filter>
+    <ClInclude Include="src\Game\Player\Player.h">
+      <Filter>Header Files\Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Player\PlayerProjectile.h">
+      <Filter>Header Files\Game\Player</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\ScoreUI.h">
       <Filter>Header Files\Game</Filter>
@@ -80,8 +89,11 @@
     <ClCompile Include="src\Game\Background.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Player.cpp">
-      <Filter>Source Files\Game</Filter>
+    <ClCompile Include="src\Game\Player\Player.cpp">
+      <Filter>Source Files\Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Player\PlayerProjectile.cpp">
+      <Filter>Source Files\Game\Player</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\ScoreUI.cpp">
       <Filter>Source Files\Game</Filter>
