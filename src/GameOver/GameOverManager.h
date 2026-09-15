@@ -39,6 +39,8 @@ public:
 	GameOverManager();
 
 public:
+	void Reset();
+
 	bool UpdateLogic(float deltaTime);
 	void UpdateRender(int currentScore, bool hasReachHighScore);
 

@@ -314,6 +314,7 @@
     <ClInclude Include="src\Game\Target\Target.h" />
     <ClInclude Include="src\Game\Target\TargetManager.h" />
     <ClInclude Include="src\GameOver\GameOverManager.h" />
+    <ClInclude Include="src\TitleScreen\TitleScreen.h" />
     <ClInclude Include="src\resource_dir.h" />
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +331,7 @@
     <ClCompile Include="src\Game\Target\Target.cpp" />
     <ClCompile Include="src\Game\Target\TargetManager.cpp" />
     <ClCompile Include="src\GameOver\GameOverManager.cpp" />
+    <ClCompile Include="src\TitleScreen\TitleScreen.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>

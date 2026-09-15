@@ -11,10 +11,6 @@ public:
 	void UpdateScore(float deltaTime, float backgroundSpeed);
 	void ResetScore();
 	bool AddScoreToHighScore();
-	int CurrentScore;
-
-private:
-	float m_gameTimer;
 
 private:
 	void SaveHighScore();
@@ -23,6 +19,9 @@ private:
 public :
 	std::vector<int> HighScoreList;
 	const int HighScoreLimit;
+	int CurrentScore;
+
 private:
 	const std::string m_highScoreFileName;
+	float m_gameTimer;
 };

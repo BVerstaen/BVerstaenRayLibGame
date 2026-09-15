@@ -24,6 +24,11 @@ GameOverManager::GameOverManager() : m_counter(0), m_gameFont(GameFont::Instance
 	m_gameOverTextList.push_back(GameOverText("press any key", Vector2(400, 400), 1.0f, -5.0f, -1, RAYWHITE));
 }
 
+void GameOverManager::Reset()
+{
+	m_counter = 0.0f;
+}
+
 //Returns true if switch state
 bool GameOverManager::UpdateLogic(float deltaTime)
 {

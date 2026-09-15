@@ -5,7 +5,7 @@ void Application::Run()
 	const int screenWidth = 800;
 	const int screenHeight = 600;
 
-	m_currentGameState = GameState::GAME;
+	m_currentGameState = GameState::TITLE;
 
 	m_scoreSys.ResetScore();
 	m_player.Setup(&m_background);
@@ -33,6 +33,8 @@ void Application::LogicTick(float deltaTime)
 	switch (m_currentGameState)
 	{
 	case GameState::TITLE:
+		if (m_titleScreen.CheckStartKey())
+			SwitchGameState(GameState::GAME);
 		break;
 
 	case GameState::GAME:
@@ -57,7 +59,7 @@ void Application::LogicTick(float deltaTime)
 
 	case GameState::GAMEOVER:
 		if (m_gameOverManager.UpdateLogic(deltaTime))
-			SwitchGameState(GameState::GAME);
+			SwitchGameState(GameState::TITLE);
 		break;
 
 	default:
@@ -72,16 +74,18 @@ void Application::RenderTick(float deltaTime)
 	BeginDrawing();
 	ClearBackground(RED);
 
+	m_background.UpdateRender();
+
 	switch (m_currentGameState)
 	{
 	case GameState::TITLE:
+		m_titleScreen.UpdateRender(m_scoreSys.HighScoreList);
 		break;
 
 	case GameState::GAME:
 	{
 		BeginMode2D(camera);
 		
-		m_background.UpdateRender();
 		m_targetManager.UpdateRender();
 		m_player.UpdateRender(deltaTime);
 		m_playerProj.UpdateRender();
@@ -97,7 +101,6 @@ void Application::RenderTick(float deltaTime)
 	{
 		BeginMode2D(camera);
 
-		m_background.UpdateRender();
 		m_targetManager.UpdateRender();
 		m_player.RenderDeath();
 		m_playerProj.UpdateRender();
@@ -140,6 +143,7 @@ void Application::BeginState(GameState newGameState)
 
 	case GameState::GAMEOVER:
 		m_hasReachHighScore = m_scoreSys.AddScoreToHighScore();
+		m_gameOverManager.Reset();
 		break;
 
 	default:

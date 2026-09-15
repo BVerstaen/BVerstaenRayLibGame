@@ -22,6 +22,9 @@
     <Filter Include="Source Files\GameOver">
       <UniqueIdentifier>{8ED98AF9-FA45-46F4-C339-DE512F65685C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TitleScreen">
+      <UniqueIdentifier>{FAF18D53-E616-DDD3-0F62-C263FBE5DBF1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{21EB8090-0D4E-1035-B6D3-48EBA215DCB7}</UniqueIdentifier>
     </Filter>
@@ -42,6 +45,9 @@
     </Filter>
     <Filter Include="Header Files\GameOver">
       <UniqueIdentifier>{C61B9572-3288-506D-FB7B-E8CA67A772D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TitleScreen">
+      <UniqueIdentifier>{32A9A7CC-1ECE-F64C-4719-DCDC339DF56A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game Resource Files">
       <UniqueIdentifier>{BAF00917-2652-E724-AFBF-2DD71B201EE4}</UniqueIdentifier>
@@ -102,6 +108,9 @@
     <ClInclude Include="src\GameOver\GameOverManager.h">
       <Filter>Header Files\GameOver</Filter>
     </ClInclude>
+    <ClInclude Include="src\TitleScreen\TitleScreen.h">
+      <Filter>Header Files\TitleScreen</Filter>
+    </ClInclude>
     <ClInclude Include="src\resource_dir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -145,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="src\GameOver\GameOverManager.cpp">
       <Filter>Source Files\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TitleScreen\TitleScreen.cpp">
+      <Filter>Source Files\TitleScreen</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>

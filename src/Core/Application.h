@@ -7,6 +7,8 @@
 #include <Core/GameFont.h>
 #include <Core/Random.h>
 
+#include <TitleScreen/TitleScreen.h>
+
 #include <Game/Background.h>
 #include <Game/Player/Player.h>
 #include <Game/Target/TargetManager.h>
@@ -51,6 +53,8 @@ private:
 	GameState m_currentGameState;
 	
 	//Game Systems
+	TitleScreen m_titleScreen;
+
 	Random m_rand;
 	GameFont m_font;
 	ScoreSystem m_scoreSys;
