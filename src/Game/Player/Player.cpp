@@ -1,6 +1,7 @@
 #include "Player.h"
 
 #include <Game/Background.h>
+#include <Core/AudioManager.h>
 #include <stdexcept>
 #include <iostream>
 #include <algorithm>
@@ -51,11 +52,13 @@ void Player::UpdateLogic(float deltaTime)
 	{
 		m_verticalVelocity -= 100.0f;
 		m_currentFlapAnimationTimer = m_flapAnimationTimer;
+		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERFLAP);
 	}
 	if (IsKeyPressed(KEY_DOWN))
 	{
 		m_verticalVelocity += 100.0f;
 		m_currentFlapAnimationTimer = m_flapAnimationTimer;
+		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERFLAP);
 	}
 
 	//Change speed

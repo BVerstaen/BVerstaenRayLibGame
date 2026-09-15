@@ -72,6 +72,9 @@
     <ClInclude Include="src\Core\Application.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\AudioManager.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Core\ColorUtilities.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -120,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\AudioManager.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\ColorUtilities.cpp">

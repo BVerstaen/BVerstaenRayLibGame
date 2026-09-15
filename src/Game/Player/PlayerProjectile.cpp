@@ -1,5 +1,6 @@
 #include "PlayerProjectile.h"
 #include "raymath.h"
+#include <Core/AudioManager.h>
 
 #pragma region Constructors / Desctructors / Movement
 
@@ -24,7 +25,10 @@ void PlayerProjectile::Reset()
 void PlayerProjectile::SpawnProjectile(Vector2 playerPos)
 {
 	if (m_projectilePositions.size() < m_projectileLimit)
+	{
 		m_projectilePositions.push_back(Vector2Add(playerPos, m_spawnOffset));
+		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERSHOOT);
+	}
 }
 
 void PlayerProjectile::UpdateLogic(float deltaTime)

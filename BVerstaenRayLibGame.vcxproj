@@ -302,6 +302,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Application.h" />
+    <ClInclude Include="src\Core\AudioManager.h" />
     <ClInclude Include="src\Core\ColorUtilities.h" />
     <ClInclude Include="src\Core\GameFont.h" />
     <ClInclude Include="src\Core\Random.h" />
@@ -320,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\Core\AudioManager.cpp" />
     <ClCompile Include="src\Core\ColorUtilities.cpp" />
     <ClCompile Include="src\Core\GameFont.cpp" />
     <ClCompile Include="src\Core\Random.cpp" />

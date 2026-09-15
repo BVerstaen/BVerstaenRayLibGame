@@ -17,6 +17,7 @@
 #include <Game/Hazard/HazardManager.h>
 
 #include <GameOver/GameOverManager.h>
+#include "AudioManager.h"
 
 class Application
 {
@@ -58,6 +59,8 @@ private:
 	Random m_rand;
 	GameFont m_font;
 	ScoreSystem m_scoreSys;
+	AudioManager m_audio;
+
 	Background m_background;
 	Player m_player;
 	PlayerProjectile m_playerProj;

@@ -20,6 +20,8 @@ void Application::Run()
 	while (!WindowShouldClose())
 	{
 		float deltaTime = GetFrameTime();
+		m_audio.UpdateMusic();
+
 		LogicTick(deltaTime);
 		RenderTick(deltaTime);
 	}
@@ -87,12 +89,12 @@ void Application::RenderTick(float deltaTime)
 	case GameState::GAME:
 	{
 		BeginMode2D(camera);
-		
+
 		m_targetManager.UpdateRender();
 		m_player.UpdateRender(deltaTime);
 		m_playerProj.UpdateRender();
 		m_hazardManager.UpdateRender();
-		
+
 		EndMode2D();
 
 		m_scoreUI.DrawScore(deltaTime, m_scoreSys.CurrentScore);
@@ -147,8 +149,11 @@ void Application::BeginState(GameState newGameState)
 		break;
 
 	case GameState::GAMEOVER:
+		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERDEATH);
 		m_hasReachHighScore = m_scoreSys.AddScoreToHighScore();
 		m_gameOverManager.Reset();
+
+		m_audio.PlayMusicFromList(AudioManager::MusicList::GAMEOVER);
 		break;
 
 	default:
@@ -159,6 +164,8 @@ void Application::BeginState(GameState newGameState)
 
 void Application::EndState(GameState oldGameState)
 {
+	m_audio.StopCurrentMusic();
+
 	switch (oldGameState)
 	{
 	case GameState::TITLE:
@@ -167,6 +174,7 @@ void Application::EndState(GameState oldGameState)
 		break;
 	case GameState::GAMEOVER:
 		break;
+
 	default:
 		TraceLog(LOG_ERROR, "Unknown game state");
 		break;

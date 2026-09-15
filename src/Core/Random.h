@@ -16,7 +16,6 @@ public:
 
 #pragma region Singleton
 public:
-	// Accès à l'instance globale de random (à utiliser de préférence)
 	static Random& Instance();
 private:
 	static Random* s_instance;
