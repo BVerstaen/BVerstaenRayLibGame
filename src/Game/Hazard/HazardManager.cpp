@@ -1,8 +1,9 @@
 #include "HazardManager.h"
+#include <random>
 
-HazardManager::HazardManager() :m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_spawnPosition(Vector2(928, 474)), m_pointsForHit(50)
+HazardManager::HazardManager() :m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_spawnPosition(Vector2(928, 474))
 {
-	m_spawnDelay = GetRandomDelay();
+	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
 
 	//Add textures
 	const int targetNumber = 3;
@@ -25,4 +26,17 @@ HazardManager::~HazardManager()
 	{
 		UnloadTexture(texture);
 	}
+}
+
+
+void HazardManager::UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed)
+{
+}
+
+void HazardManager::UpdateRender(float deltaTime)
+{
+}
+
+void HazardManager::UpdateCollisions(ScoreSystem& score, const Rectangle& playerRectangle)
+{
 }

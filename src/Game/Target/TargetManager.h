@@ -16,9 +16,6 @@ public:
 	TargetManager(TargetManager&& targetManager) noexcept = delete;
 	TargetManager& operator=(TargetManager&& targetManager) noexcept = delete;
 
-private:
-	const float GetRandomDelay() const;
-
 public:
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
 	void UpdateRender(float deltaTime);

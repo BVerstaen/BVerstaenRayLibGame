@@ -60,6 +60,9 @@
     <ClInclude Include="src\Core\GameFont.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Random.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Core\ScoreSystem.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -93,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\GameFont.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Random.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\ScoreSystem.cpp">

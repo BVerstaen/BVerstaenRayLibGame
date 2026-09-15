@@ -8,6 +8,7 @@
 
 class HazardManager
 {
+#pragma region Constructors / Desctructors / Movement
 public:
 	HazardManager();
 	~HazardManager();
@@ -15,9 +16,8 @@ public:
 	HazardManager& operator=(const HazardManager& hazardManager) = delete;
 	HazardManager(HazardManager&& hazardManager) noexcept = delete;
 	HazardManager& operator=(HazardManager&& hazardManager) noexcept = delete;
+#pragma endregion
 
-private:
-	const float GetRandomDelay() const;
 
 public:
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);

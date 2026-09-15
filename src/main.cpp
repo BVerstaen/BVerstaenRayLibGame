@@ -1,10 +1,11 @@
 #include "raylib.h"
 #include "resource_dir.h"
 
-#include <Game/Background.h>
-#include <Game/Player/Player.h>
 #include <Core/ScoreSystem.h>
 #include <Core/GameFont.h>
+#include <Core/Random.h>
+#include <Game/Background.h>
+#include <Game/Player/Player.h>
 #include <Game/Target/TargetManager.h>
 #include <Game/Player/PlayerProjectile.h>
 #include <Game/ScoreUI.h>
@@ -16,6 +17,7 @@ int main ()
 	InitWindow(800, 600, "Dragon rampage");
 	SearchAndSetResourceDir("resources");
 
+	Random rand;
 	GameFont font;
 	ScoreSystem scoreSys = ScoreSystem();
 
