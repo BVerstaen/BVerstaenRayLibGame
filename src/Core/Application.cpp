@@ -6,12 +6,6 @@ void Application::Run()
 	m_scoreSys.ResetScore();
 	m_player.Setup(&m_background);
 
-	camera = { 0 };
-	camera.target = Vector2(0, 0);
-	camera.offset = Vector2(0, 0);//Vector2(screenWidth / 2.0f, screenHeight / 2.0f);
-	camera.rotation = 0.0f;
-	camera.zoom = 1.5f;
-
 	//Launch first state
 	m_currentGameState = GameState::TITLE;
 	BeginState(m_currentGameState);
@@ -78,18 +72,24 @@ void Application::RenderTick(float deltaTime)
 	BeginDrawing();
 	ClearBackground(RED);
 
-	m_background.UpdateRender();
 
 	switch (m_currentGameState)
 	{
 	case GameState::TITLE:
+		BeginMode2D(m_camera.GetCamera());
+
+		m_background.UpdateRender();
+
+		EndMode2D();
+
 		m_titleScreen.UpdateRender(m_scoreSys.HighScoreList);
 		break;
 
 	case GameState::GAME:
 	{
-		BeginMode2D(camera);
+		BeginMode2D(m_camera.GetCamera());
 
+		m_background.UpdateRender();
 		m_targetManager.UpdateRender();
 		m_player.UpdateRender(deltaTime);
 		m_playerProj.UpdateRender();
@@ -103,8 +103,9 @@ void Application::RenderTick(float deltaTime)
 
 	case GameState::GAMEOVER:
 	{
-		BeginMode2D(camera);
+		BeginMode2D(m_camera.GetCamera());
 
+		m_background.UpdateRender();
 		m_targetManager.UpdateRender();
 		m_player.RenderDeath();
 		m_playerProj.UpdateRender();

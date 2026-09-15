@@ -52,6 +52,18 @@
     <Filter Include="Game Resource Files">
       <UniqueIdentifier>{BAF00917-2652-E724-AFBF-2DD71B201EE4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Resource Files\Audio">
+      <UniqueIdentifier>{3BA20A73-A764-3EFD-F014-CD895C1617DB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Resource Files\Audio\PlayerFlap">
+      <UniqueIdentifier>{5AC1D240-46A8-9438-EFF8-FA55DBBE0D9F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Resource Files\Audio\PlayerShoot">
+      <UniqueIdentifier>{8435145C-F0F9-124C-B95F-431625E3AE81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Resource Files\Audio\TargetHit">
+      <UniqueIdentifier>{76386969-E2F1-D313-6B51-EEEDD7098A83}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Game Resource Files\Font">
       <UniqueIdentifier>{003E1A70-EC62-69F0-15AE-4E800132680E}</UniqueIdentifier>
     </Filter>
@@ -73,6 +85,9 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\AudioManager.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\CameraManager.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\ColorUtilities.h">
@@ -128,6 +143,9 @@
     <ClCompile Include="src\Core\AudioManager.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\CameraManager.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Core\ColorUtilities.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -175,6 +193,48 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\Audio\Music_Game.mp3">
+      <Filter>Game Resource Files\Audio</Filter>
+    </None>
+    <None Include="resources\Audio\Music_Gameover.mp3">
+      <Filter>Game Resource Files\Audio</Filter>
+    </None>
+    <None Include="resources\Audio\Music_Title.mp3">
+      <Filter>Game Resource Files\Audio</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerDeath_0.wav">
+      <Filter>Game Resource Files\Audio</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_0.wav">
+      <Filter>Game Resource Files\Audio\PlayerFlap</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_1.wav">
+      <Filter>Game Resource Files\Audio\PlayerFlap</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_2.wav">
+      <Filter>Game Resource Files\Audio\PlayerFlap</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_3.wav">
+      <Filter>Game Resource Files\Audio\PlayerFlap</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerShoot\PlayerShoot_0.wav">
+      <Filter>Game Resource Files\Audio\PlayerShoot</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerShoot\PlayerShoot_1.wav">
+      <Filter>Game Resource Files\Audio\PlayerShoot</Filter>
+    </None>
+    <None Include="resources\Audio\PlayerShoot\PlayerShoot_2.wav">
+      <Filter>Game Resource Files\Audio\PlayerShoot</Filter>
+    </None>
+    <None Include="resources\Audio\TargetHit\TargetHit_0.wav">
+      <Filter>Game Resource Files\Audio\TargetHit</Filter>
+    </None>
+    <None Include="resources\Audio\TargetHit\TargetHit_1.wav">
+      <Filter>Game Resource Files\Audio\TargetHit</Filter>
+    </None>
+    <None Include="resources\Audio\TargetHit\TargetHit_2.wav">
+      <Filter>Game Resource Files\Audio\TargetHit</Filter>
+    </None>
     <None Include="resources\Font\GameFont.ttf">
       <Filter>Game Resource Files\Font</Filter>
     </None>

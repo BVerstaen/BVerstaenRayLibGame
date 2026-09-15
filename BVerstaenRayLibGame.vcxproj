@@ -303,6 +303,7 @@
   <ItemGroup>
     <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Core\AudioManager.h" />
+    <ClInclude Include="src\Core\CameraManager.h" />
     <ClInclude Include="src\Core\ColorUtilities.h" />
     <ClInclude Include="src\Core\GameFont.h" />
     <ClInclude Include="src\Core\Random.h" />
@@ -322,6 +323,7 @@
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\AudioManager.cpp" />
+    <ClCompile Include="src\Core\CameraManager.cpp" />
     <ClCompile Include="src\Core\ColorUtilities.cpp" />
     <ClCompile Include="src\Core\GameFont.cpp" />
     <ClCompile Include="src\Core\Random.cpp" />
@@ -339,6 +341,20 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\Audio\Music_Game.mp3" />
+    <None Include="resources\Audio\Music_Gameover.mp3" />
+    <None Include="resources\Audio\Music_Title.mp3" />
+    <None Include="resources\Audio\PlayerDeath_0.wav" />
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_0.wav" />
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_1.wav" />
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_2.wav" />
+    <None Include="resources\Audio\PlayerFlap\PlayerFlap_3.wav" />
+    <None Include="resources\Audio\PlayerShoot\PlayerShoot_0.wav" />
+    <None Include="resources\Audio\PlayerShoot\PlayerShoot_1.wav" />
+    <None Include="resources\Audio\PlayerShoot\PlayerShoot_2.wav" />
+    <None Include="resources\Audio\TargetHit\TargetHit_0.wav" />
+    <None Include="resources\Audio\TargetHit\TargetHit_1.wav" />
+    <None Include="resources\Audio\TargetHit\TargetHit_2.wav" />
     <None Include="resources\Font\GameFont.ttf" />
     <None Include="resources\High.score" />
     <None Include="src\icon.ico" />

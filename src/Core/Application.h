@@ -18,6 +18,7 @@
 
 #include <GameOver/GameOverManager.h>
 #include "AudioManager.h"
+#include "CameraManager.h"
 
 class Application
 {
@@ -56,6 +57,7 @@ private:
 	//Game Systems
 	TitleScreen m_titleScreen;
 
+	CameraManager m_camera;
 	Random m_rand;
 	GameFont m_font;
 	ScoreSystem m_scoreSys;
@@ -72,6 +74,4 @@ private:
 
 private:
 	bool m_hasReachHighScore = false;
-	Camera2D camera;
-
 };
