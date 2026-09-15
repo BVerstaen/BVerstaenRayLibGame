@@ -6,13 +6,21 @@
 
 class GameOverManager
 {
+private: 
+	enum class TextType
+	{
+		STANDARD,
+		ADDSCOREATEND,
+		DISPLAYIFHIGHSCORE
+	};
+
 #pragma region Game over text data
 private:
 	struct GameOverText
 	{
 	public:
 		GameOverText();
-		GameOverText(std::string text, Vector2 pos, float delay, float rotationAmp, float textSize = -1, Color col = WHITE, bool addScoreAtEnd = false);
+		GameOverText(std::string text, Vector2 pos, float delay, float rotationAmp, float textSize = -1, Color col = WHITE, TextType textType = TextType::STANDARD);
 
 	public:
 		std::string Text;
@@ -23,7 +31,7 @@ private:
 		float Amplitude;
 		Color TextColor;
 
-		bool AddScoreToText;
+		TextType Type;
 	};
 #pragma endregion
 
@@ -32,7 +40,7 @@ public:
 
 public:
 	bool UpdateLogic(float deltaTime);
-	void UpdateRender(int currentScore);
+	void UpdateRender(int currentScore, bool hasReachHighScore);
 
 private:
 	GameFont& m_gameFont;

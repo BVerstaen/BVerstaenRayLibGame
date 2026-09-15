@@ -63,8 +63,8 @@ private:
 
 	GameOverManager m_gameOverManager;
 
-
 private:
+	bool m_hasReachHighScore = false;
 	Camera2D camera;
 
 };

@@ -105,7 +105,7 @@ void Application::RenderTick(float deltaTime)
 
 		EndMode2D();
 
-		m_gameOverManager.UpdateRender(m_scoreSys.CurrentScore);
+		m_gameOverManager.UpdateRender(m_scoreSys.CurrentScore, m_hasReachHighScore);
 		break;
 	}
 
@@ -130,6 +130,7 @@ void Application::BeginState(GameState newGameState)
 		break;
 
 	case GameState::GAME:
+		m_hasReachHighScore = false;
 		m_scoreSys.ResetScore();
 		m_player.Reset();
 		m_playerProj.Reset();
@@ -138,7 +139,7 @@ void Application::BeginState(GameState newGameState)
 		break;
 
 	case GameState::GAMEOVER:
-		m_scoreSys.AddScoreToHighScore();
+		m_hasReachHighScore = m_scoreSys.AddScoreToHighScore();
 		break;
 
 	default:
