@@ -302,6 +302,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Application.h" />
+    <ClInclude Include="src\Core\ColorUtilities.h" />
     <ClInclude Include="src\Core\GameFont.h" />
     <ClInclude Include="src\Core\Random.h" />
     <ClInclude Include="src\Core\ScoreSystem.h" />
@@ -319,6 +320,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\Core\ColorUtilities.cpp" />
     <ClCompile Include="src\Core\GameFont.cpp" />
     <ClCompile Include="src\Core\Random.cpp" />
     <ClCompile Include="src\Core\ScoreSystem.cpp" />

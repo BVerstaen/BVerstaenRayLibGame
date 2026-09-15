@@ -1,6 +1,7 @@
 #include "GameOverManager.h"
 #include <cmath>
 #include <string>
+#include <Core/ColorUtilities.h>
 
 #pragma region Game over text data
 
@@ -55,8 +56,13 @@ void GameOverManager::UpdateRender(int currentScore, bool hasReachHighScore)
 			}
 
 			case TextType::DISPLAYIFHIGHSCORE:
-				if(!hasReachHighScore)
+			{
+				if (!hasReachHighScore)
 					break;
+				m_gameFont.PrintTextPro(textData.Text, textData.Position, rotation, textData.Size, ColorUtilities::ColorFromHue(m_counter * 1.5f));
+				break;
+			}
+
 			case TextType::STANDARD:
 			default:
 				m_gameFont.PrintTextPro(textData.Text, textData.Position, rotation, textData.Size, textData.TextColor);

@@ -16,9 +16,6 @@ public:
 	void UpdateRender(const std::vector<int> highscoreList);
 
 private:
-	Color ColorFromHue(float hue);
-
-private:
 	float m_titleHue;
 	const float m_hueSpeed;
 
