@@ -69,7 +69,7 @@ void AudioManager::PlaySoundFromList(SoundList soundToPlay)
 		return;
 	}
 
-	int indexToPlay = Random::Instance().RandomRange(0, it->second.size());
+	int indexToPlay = Random::Instance().RandomRange(0, (it->second.size() - 1));
 	PlaySound(it->second[indexToPlay]);
 }
 void AudioManager::PlayMusicFromList(MusicList musicToPlay)

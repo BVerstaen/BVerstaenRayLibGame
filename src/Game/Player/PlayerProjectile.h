@@ -25,7 +25,7 @@ public:
 	void UpdateRender();
 
 public:
-	const std::vector<Vector2>& GetProjectilePositions() const;
+	std::vector<Vector2>& GetProjectilePositions();
 	const Vector2& GetProjectileSize() const;
 
 private:

@@ -55,7 +55,7 @@ void PlayerProjectile::UpdateRender()
 	}
 }
 
-const std::vector<Vector2>& PlayerProjectile::GetProjectilePositions() const
+std::vector<Vector2>& PlayerProjectile::GetProjectilePositions()
 {
 	return m_projectilePositions;
 }

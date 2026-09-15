@@ -87,7 +87,10 @@ void TargetManager::UpdateCollisions(ScoreSystem& score, std::vector<Vector2>& p
 	{
 		//Don't check projectile still in the air, cause can't be in range
 		if (projIt->y <= minimumYPos)
+		{
+			projIt++;
 			continue;
+		}
 
 		//Setup rect & check collisions
 		currentProjectileRect.x = projIt->x;
