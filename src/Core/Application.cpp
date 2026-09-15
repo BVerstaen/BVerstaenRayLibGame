@@ -90,7 +90,6 @@ void Application::RenderTick(float deltaTime)
 		BeginMode2D(m_camera.GetCamera());
 
 		m_background.UpdateRender();
-		DrawRectangleRec(m_player.GetRectangle(), BLUE);
 		m_targetManager.UpdateRender();
 		m_player.UpdateRender(deltaTime);
 

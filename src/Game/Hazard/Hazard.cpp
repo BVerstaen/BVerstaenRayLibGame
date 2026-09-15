@@ -16,9 +16,6 @@ bool Hazard::UpdateLogic(float deltaTime, float groundSpeed)
 
 void Hazard::UpdateRender()
 {
-	//DrawTextureEx(m_hazardTexture, m_position, m_rotation, 1.0f, WHITE);
-	DrawRectangle(m_position.x, m_position.y, 48, 48, RED);
-
 	Rectangle drawRect = Rectangle(0, 0, m_hazardTexture.width, m_hazardTexture.height);
 	Vector2 centerRect = Vector2(m_hazardTexture.width / 2, m_hazardTexture.height / 2);
 	DrawTexturePro(m_hazardTexture, drawRect, Rectangle(m_position.x + centerRect.x, m_position.y + centerRect.y, drawRect.width, drawRect.height), centerRect, m_rotation, WHITE);
