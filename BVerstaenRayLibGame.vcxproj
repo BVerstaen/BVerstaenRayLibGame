@@ -371,6 +371,10 @@
     <Image Include="resources\Sprites\Hazards\GroundTarget_0.png" />
     <Image Include="resources\Sprites\Hazards\GroundTarget_1.png" />
     <Image Include="resources\Sprites\Hazards\GroundTarget_2.png" />
+    <Image Include="resources\Sprites\HighScore_0.png" />
+    <Image Include="resources\Sprites\HighScore_1.png" />
+    <Image Include="resources\Sprites\HighScore_2.png" />
+    <Image Include="resources\Sprites\Instruction.png" />
     <Image Include="resources\Sprites\Player\PlayerProjectile.png" />
     <Image Include="resources\Sprites\Player\Player_Death.png" />
     <Image Include="resources\Sprites\Player\Player_Flap.png" />

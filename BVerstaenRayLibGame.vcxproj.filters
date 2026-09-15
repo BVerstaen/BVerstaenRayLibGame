@@ -275,6 +275,18 @@
     <Image Include="resources\Sprites\Hazards\GroundTarget_2.png">
       <Filter>Game Resource Files\Sprites\Hazards</Filter>
     </Image>
+    <Image Include="resources\Sprites\HighScore_0.png">
+      <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\HighScore_1.png">
+      <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\HighScore_2.png">
+      <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Instruction.png">
+      <Filter>Game Resource Files\Sprites</Filter>
+    </Image>
     <Image Include="resources\Sprites\Player\PlayerProjectile.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>

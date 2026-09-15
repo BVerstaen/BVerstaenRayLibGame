@@ -36,8 +36,6 @@ void CameraManager::BeginScissor(const Rectangle playerRect)
 		float progress = m_counter / m_tunnelDelay;
 		progress = std::sin(progress * PI);
 
-		TraceLog(LOG_INFO, std::to_string(progress).c_str());
-
 		float newYPos = std::lerp(0, playerRect.y - (m_tunnelHeight / 2), progress);
 		float newHeight = std::lerp(600, playerRect.height + m_tunnelHeight, progress);
 		BeginScissorMode(0, newYPos, 800, newHeight);
