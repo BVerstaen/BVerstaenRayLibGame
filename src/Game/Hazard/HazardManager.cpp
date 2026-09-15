@@ -2,7 +2,7 @@
 #include <Core/Random.h>
 #include <random>
 
-HazardManager::HazardManager() :m_spawnPositionYRange(Vector2(100, 350)), m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_baseRotationRange(Vector2(0.0f,359.0f)), m_baseSpeedRange(Vector2(-10.0f, 5.0f))
+HazardManager::HazardManager() :m_spawnPositionYRange(Vector2(100, 350)), m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_baseRotationRange(Vector2(0.0f,359.0f)), m_baseSpeedRange(Vector2(1.0f, 5.0f))
 {
 	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
 
@@ -77,7 +77,7 @@ bool HazardManager::UpdateCollisions(const Rectangle& playerRectangle)
 	{
 		const Vector2& hazardPos = hazard.GetPosition();
 		//Don't check knife if hasn't reach player, cause can't be in range
-		if (hazardPos.y > minimumXPosition)
+		if (hazardPos.x > minimumXPosition)
 			continue;
 
 		//Setup rect & check collisions

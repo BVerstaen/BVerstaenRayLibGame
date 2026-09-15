@@ -6,19 +6,11 @@
 #include <algorithm>
 
 
-Player::Player(Background* background) : m_position(Vector2(100, 300)), m_verticalVelocity(1), m_gravityForce(50.0f)
+Player::Player() : m_position(Vector2(100, 300)), m_verticalVelocity(1), m_gravityForce(50.0f)
 {
-	if (!background)
-		throw std::runtime_error("No valid background");
-	m_background = background;
-
 	m_idleTexture = LoadTexture("Sprites\\Player\\Player_Idle.png");
 	m_flapTexture = LoadTexture("Sprites\\Player\\Player_Flap.png");
 	m_deathTexture = LoadTexture("Sprites\\Player\\Player_Death.png");
-
-	m_slowSpeed = m_background->GetSpeed() * 0.5f;
-	m_defaultSpeed = m_background->GetSpeed();
-	m_fastSpeed = m_background->GetSpeed() * 1.5f;
 	m_isChangingSpeed = false;
 
 	m_flapAnimationTimer = 0.1f;
@@ -30,6 +22,17 @@ Player::~Player()
 	UnloadTexture(m_idleTexture);
 	UnloadTexture(m_flapTexture);
 	UnloadTexture(m_deathTexture);
+}
+
+void Player::Setup(Background* background)
+{
+	if (!background)
+		throw std::runtime_error("No valid background");
+	m_background = background;
+
+	m_slowSpeed = m_background->GetSpeed() * 0.5f;
+	m_defaultSpeed = m_background->GetSpeed();
+	m_fastSpeed = m_background->GetSpeed() * 1.5f;
 }
 
 void Player::UpdateLogic(float deltaTime)
@@ -86,6 +89,11 @@ void Player::UpdateRender(float deltaTime)
 		m_currentFlapAnimationTimer -= deltaTime;
 
 	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
+}
+
+const bool Player::IsFiring()
+{
+	return IsKeyPressed(KEY_SPACE);
 }
 
 const bool Player::CheckGroundCollision()

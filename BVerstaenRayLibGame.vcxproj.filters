@@ -57,6 +57,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\Application.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Core\GameFont.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -95,6 +98,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Application.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Core\GameFont.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>

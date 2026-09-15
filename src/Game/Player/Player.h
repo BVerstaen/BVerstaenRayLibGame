@@ -6,16 +6,18 @@ class Background;
 class Player
 {
 public:
-	Player(Background* background);
+	Player();
 	~Player();
 	Player(const Player& player) = delete;
 	Player& operator=(const Player& player) = delete;
 	Player(Player&& player) noexcept = delete;
 	Player& operator=(Player&& player) noexcept = delete;
 
+	void Setup(Background* background);
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
 
+	const bool IsFiring();
 	const bool CheckGroundCollision();
 
 private:
