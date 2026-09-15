@@ -48,7 +48,10 @@ public:
 	void UpdateMusic();
 
 private:
-	std::unordered_map<SoundList, Sound> m_soundList;
+	std::vector<Sound> LoadAllSoundsAtPath(const std::string& soundWavPath, int numberIteration);
+
+private:
+	std::unordered_map<SoundList, std::vector<Sound>> m_soundList;
 	std::unordered_map<MusicList, Music> m_musicList;
 	Music m_currentMusic;
 };

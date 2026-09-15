@@ -135,6 +135,8 @@ void Application::BeginState(GameState newGameState)
 	{
 	case GameState::TITLE:
 		m_background.SetSpeed(500);
+
+		m_audio.PlayMusicFromList(AudioManager::MusicList::TITLE);
 		break;
 
 	case GameState::GAME:
@@ -146,6 +148,8 @@ void Application::BeginState(GameState newGameState)
 		m_playerProj.Reset();
 		m_hazardManager.Reset();
 		m_targetManager.Reset();
+
+		m_audio.PlayMusicFromList(AudioManager::MusicList::GAME);
 		break;
 
 	case GameState::GAMEOVER:

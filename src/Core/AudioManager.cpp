@@ -1,5 +1,7 @@
 #include "AudioManager.h"
 #include <stdexcept>
+#include "Random.h"
+#include <string>
 
 AudioManager::AudioManager()
 {
@@ -11,22 +13,29 @@ AudioManager::AudioManager()
 	InitAudioDevice();
 
 	//Load sounds
-
+	m_soundList[SoundList::PLAYERFLAP] = LoadAllSoundsAtPath("Audio/PlayerFlap/PlayerFlap_", 4);
+	m_soundList[SoundList::PLAYERSHOOT] = LoadAllSoundsAtPath("Audio/PlayerShoot/PlayerShoot_", 3);
+	m_soundList[SoundList::PLAYERDEATH] = LoadAllSoundsAtPath("Audio/PlayerDeath_", 1);
+	m_soundList[SoundList::TARGETHIT] = LoadAllSoundsAtPath("Audio/TargetHit/TargetHit_", 3);
 
 	m_currentMusic = Music();
-	m_musicList[MusicList::GAMEOVER] = LoadMusicStream("Audio/Music_Gameover.mp3");
-	m_musicList[MusicList::GAMEOVER].looping = false;
+	m_musicList[MusicList::TITLE] = LoadMusicStream("Audio/Music_Title.mp3");
+	m_musicList[MusicList::TITLE].looping = true;
 	m_musicList[MusicList::GAME] = LoadMusicStream("Audio/Music_Game.mp3");
 	m_musicList[MusicList::GAME].looping = true;
-	
+	m_musicList[MusicList::GAMEOVER] = LoadMusicStream("Audio/Music_Gameover.mp3");
+	m_musicList[MusicList::GAMEOVER].looping = false;
 }
 
 AudioManager::~AudioManager()
 {
-	//Unload sounds
+	//Unload sounds (each sound of each sound poll)
 	for (auto& sound : m_soundList)
 	{
-		UnloadSound(sound.second);
+		for (Sound sfx : sound.second)
+		{
+			UnloadSound(sfx);
+		}
 	}
 
 	//Unload musics
@@ -59,7 +68,9 @@ void AudioManager::PlaySoundFromList(SoundList soundToPlay)
 		TraceLog(LOG_ERROR, "Can't find music");
 		return;
 	}
-	PlaySound(it->second);
+
+	int indexToPlay = Random::Instance().RandomRange(0, it->second.size());
+	PlaySound(it->second[indexToPlay]);
 }
 void AudioManager::PlayMusicFromList(MusicList musicToPlay)
 {
@@ -91,4 +102,23 @@ void AudioManager::UpdateMusic()
 		return;
 	
 	UpdateMusicStream(m_currentMusic);
+}
+
+std::vector<Sound> AudioManager::LoadAllSoundsAtPath(const std::string& soundWavPath, int numberIteration)
+{
+	std::vector<Sound> newSoundList;
+
+	for (int i = 0; i < numberIteration; i++)
+	{
+		std::string sfxPath = soundWavPath + std::to_string(i) + ".wav";
+		if (!FileExists(sfxPath.c_str()))
+		{
+			TraceLog(LOG_ERROR, "File [%s] is invalid", sfxPath.c_str());
+			continue;
+		}
+
+		newSoundList.push_back(LoadSound(sfxPath.c_str()));
+	}
+
+	return newSoundList;
 }
