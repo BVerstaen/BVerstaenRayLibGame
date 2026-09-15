@@ -63,4 +63,8 @@ private:
 
 	GameOverManager m_gameOverManager;
 
+
+private:
+	Camera2D camera;
+
 };

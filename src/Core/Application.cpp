@@ -2,10 +2,19 @@
 
 void Application::Run()
 {
+	const int screenWidth = 800;
+	const int screenHeight = 600;
+
 	m_currentGameState = GameState::GAME;
 
 	m_scoreSys.ResetScore();
 	m_player.Setup(&m_background);
+
+	camera = { 0 };
+	camera.target = Vector2(0, 0);
+	camera.offset = Vector2(0, 0);//Vector2(screenWidth / 2.0f, screenHeight / 2.0f);
+	camera.rotation = 0.0f;
+	camera.zoom = 1.5f;
 
 	//Game loop
 	while (!WindowShouldClose())
@@ -13,7 +22,7 @@ void Application::Run()
 		float deltaTime = GetFrameTime();
 		LogicTick(deltaTime);
 		RenderTick(deltaTime);
-	}	
+	}
 }
 
 #pragma region Tick
@@ -61,7 +70,7 @@ void Application::RenderTick(float deltaTime)
 {
 	//RENDER UPDATE
 	BeginDrawing();
-	ClearBackground(BLACK);
+	ClearBackground(RED);
 
 	switch (m_currentGameState)
 	{
@@ -70,11 +79,15 @@ void Application::RenderTick(float deltaTime)
 
 	case GameState::GAME:
 	{
+		BeginMode2D(camera);
+		
 		m_background.UpdateRender();
 		m_targetManager.UpdateRender();
 		m_player.UpdateRender(deltaTime);
 		m_playerProj.UpdateRender();
 		m_hazardManager.UpdateRender();
+		
+		EndMode2D();
 
 		m_scoreUI.DrawScore(deltaTime, m_scoreSys.CurrentScore);
 		break;
@@ -82,11 +95,15 @@ void Application::RenderTick(float deltaTime)
 
 	case GameState::GAMEOVER:
 	{
+		BeginMode2D(camera);
+
 		m_background.UpdateRender();
 		m_targetManager.UpdateRender();
 		m_player.RenderDeath();
 		m_playerProj.UpdateRender();
 		m_hazardManager.UpdateRender();
+
+		EndMode2D();
 
 		m_gameOverManager.UpdateRender(m_scoreSys.CurrentScore);
 		break;
