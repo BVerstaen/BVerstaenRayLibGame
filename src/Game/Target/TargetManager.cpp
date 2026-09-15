@@ -1,10 +1,11 @@
 #include "TargetManager.h"
 #include <string>
 #include "Core/Random.h"
+#include <Core/AudioManager.h>
 
 #pragma region Constructors / Desctructors / Movement
 
-TargetManager::TargetManager():m_spawnDelayRange(Vector2(1.0f,3.0f)), m_spawnPosition(Vector2(928,474)), m_pointsForHit(50)
+TargetManager::TargetManager() :m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_spawnPosition(Vector2(928, 474)), m_pointsForHit(50)
 {
 	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
 
@@ -73,36 +74,46 @@ void TargetManager::UpdateRender()
 	}
 }
 
-void TargetManager::UpdateCollisions(ScoreSystem& score, const std::vector<Vector2>& projectileList, const Vector2& projectileSize)
+void TargetManager::UpdateCollisions(ScoreSystem& score, std::vector<Vector2>& projectileList, const Vector2& projectileSize)
 {
 	const float minimumYPos = m_spawnPosition.y;
 
 	//Cache rect because sizes are the same
 	Rectangle currentProjectileRect = Rectangle(0, 0, projectileSize.x, projectileSize.y);
 	Rectangle currentTargetRect = Rectangle(0, 0, 64, 64);
-	for (Vector2 projectilePos : projectileList)
+
+	auto projIt = projectileList.begin();
+	while (projIt != projectileList.end())
 	{
 		//Don't check projectile still in the air, cause can't be in range
-		if (projectilePos.y <= minimumYPos)
+		if (projIt->y <= minimumYPos)
 			continue;
 
 		//Setup rect & check collisions
-		currentProjectileRect.x = projectilePos.x;
-		currentProjectileRect.y = projectilePos.y;
+		currentProjectileRect.x = projIt->x;
+		currentProjectileRect.y = projIt->y;
 
 		auto It = m_targetList.begin();
-		while (It != m_targetList.end())
+		bool hasCollided = false;
+		while (It != m_targetList.end() && !hasCollided)
 		{
 			currentTargetRect.x = It->GetPosition().x;
 			currentTargetRect.y = It->GetPosition().y;
 
 			if (CheckCollisionRecs(currentProjectileRect, currentTargetRect))
 			{
+				AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::TARGETHIT);
 				score.CurrentScore += m_pointsForHit;
+
+				//Destroy both target & projectile
 				It = m_targetList.erase(It);
+				projIt = projectileList.erase(projIt);
+				hasCollided = true;
 			}
 			else
 				It++;
 		}
+		if (!hasCollided)
+			projIt++;
 	}
 }
