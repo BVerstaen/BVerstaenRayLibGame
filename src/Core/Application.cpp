@@ -33,7 +33,9 @@ void Application::LogicTick(float deltaTime)
 	switch (m_currentGameState)
 	{
 	case GameState::TITLE:
-		if (m_titleScreen.CheckStartKey())
+		m_background.UpdateLogic(deltaTime);
+
+		if (m_titleScreen.UpdateLogic(deltaTime))
 			SwitchGameState(GameState::GAME);
 		break;
 

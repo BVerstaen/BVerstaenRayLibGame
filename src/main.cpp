@@ -10,7 +10,7 @@ int main()
 {
 	//Init window & ressources
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Dragon rampage");
+	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Dragon Rampage");
 	SearchAndSetResourceDir("resources");
 
 	Application app;
