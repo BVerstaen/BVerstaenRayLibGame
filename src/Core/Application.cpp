@@ -29,8 +29,8 @@ void Application::LogicTick(float deltaTime)
 	case GameState::GAME:
 	{
 		m_background.UpdateLogic(deltaTime);
-		m_player.UpdateLogic(deltaTime);
 
+		m_player.UpdateLogic(deltaTime);
 		if (m_player.IsFiring())
 			m_playerProj.SpawnProjectile(m_player.GetPosition());
 		m_playerProj.UpdateLogic(deltaTime);
@@ -67,7 +67,6 @@ void Application::RenderTick(float deltaTime)
 		break;
 
 	case GameState::GAME:
-	case GameState::GAMEOVER:
 	{
 		m_background.UpdateRender(deltaTime);
 		m_targetManager.UpdateRender(deltaTime);
@@ -75,7 +74,17 @@ void Application::RenderTick(float deltaTime)
 		m_playerProj.UpdateRender(deltaTime);
 		m_hazardManager.UpdateRender(deltaTime);
 
-		m_scoreUI.DrawScore(m_scoreSys.CurrentScore);
+		m_scoreUI.DrawScore(deltaTime, m_scoreSys.CurrentScore);
+		break;
+	}
+
+	case GameState::GAMEOVER:
+	{
+		m_background.UpdateRender(deltaTime);
+		m_targetManager.UpdateRender(deltaTime);
+		m_player.UpdateRender(deltaTime);
+		m_playerProj.UpdateRender(deltaTime);
+		m_hazardManager.UpdateRender(deltaTime);
 		break;
 	}
 

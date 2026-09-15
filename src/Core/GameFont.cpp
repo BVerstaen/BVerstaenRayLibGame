@@ -42,6 +42,16 @@ void GameFont::PrintText(const std::string& text, Vector2 position, float size, 
 
 }
 
+void GameFont::PrintTextPro(const std::string& text, Vector2 position, float rotation, float size, Color color)
+{
+	if (size <= 0)
+		size = m_defaultSize;
+
+	Vector2 textSize = MesureText(text, size);
+	Vector2 origin = Vector2(textSize.x / 2, textSize.y / 2);
+	DrawTextPro(m_gameFont, text.c_str(), position, origin, rotation, size, m_spacing, color);
+}
+
 const Vector2 GameFont::MesureText(const std::string text, float size) const
 {
 	if (size <= 0)

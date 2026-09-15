@@ -24,6 +24,7 @@ private:
 
 public:
 	void PrintText(const std::string& text, Vector2 position, float size = -1, Color color = WHITE);
+	void PrintTextPro(const std::string& text, Vector2 position, float rotation, float size = -1, Color color = WHITE);
 	const Vector2 MesureText(const std::string text, float size = -1) const;
 
 private:

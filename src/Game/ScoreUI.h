@@ -9,10 +9,12 @@ class ScoreUI
 public:
 	ScoreUI();
 
-	void DrawScore(int currentScore);
+	void DrawScore(float deltaTime, int currentScore);
 
 private:
 	GameFont& m_gameFont;
-	const int m_screenWidth;
+	const Vector2 m_textPosition;
 	const int m_fontSize;
+	float m_counter;
+	float m_rotation;
 };
