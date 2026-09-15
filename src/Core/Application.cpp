@@ -13,9 +13,7 @@ void Application::Run()
 		float deltaTime = GetFrameTime();
 		LogicTick(deltaTime);
 		RenderTick(deltaTime);
-	}
-	
-	m_scoreSys.AddScoreToHighScore();
+	}	
 }
 
 void Application::LogicTick(float deltaTime)
@@ -47,6 +45,8 @@ void Application::LogicTick(float deltaTime)
 	}
 
 	case GameState::GAMEOVER:
+		if (m_gameOverManager.UpdateLogic(deltaTime))
+			SwitchGameState(GameState::GAME);
 		break;
 
 	default:
@@ -85,6 +85,8 @@ void Application::RenderTick(float deltaTime)
 		m_player.RenderDeath();
 		m_playerProj.UpdateRender();
 		m_hazardManager.UpdateRender();
+
+		m_gameOverManager.UpdateRender(m_scoreSys.CurrentScore);
 		break;
 	}
 
@@ -105,6 +107,7 @@ void Application::BeginState(GameState newGameState)
 	case GameState::GAME:
 		break;
 	case GameState::GAMEOVER:
+		m_scoreSys.AddScoreToHighScore();
 		break;
 	default:
 		TraceLog(LOG_ERROR, "Unknown game state");

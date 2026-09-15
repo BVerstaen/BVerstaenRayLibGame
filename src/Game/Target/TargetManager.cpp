@@ -60,7 +60,7 @@ void TargetManager::UpdateLogic(float deltaTime, float backgroundSpeed, float gr
 
 void TargetManager::UpdateRender()
 {
-	for (Target target : m_targetList)
+	for (Target& target : m_targetList)
 	{
 		target.UpdateRender();
 	}

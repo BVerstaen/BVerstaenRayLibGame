@@ -6,12 +6,15 @@
 #include <Core/ScoreSystem.h>
 #include <Core/GameFont.h>
 #include <Core/Random.h>
+
 #include <Game/Background.h>
 #include <Game/Player/Player.h>
 #include <Game/Target/TargetManager.h>
 #include <Game/Player/PlayerProjectile.h>
 #include <Game/ScoreUI.h>
 #include <Game/Hazard/HazardManager.h>
+
+#include <GameOver/GameOverManager.h>
 
 class Application
 {
@@ -49,6 +52,6 @@ private:
 	HazardManager m_hazardManager;
 	ScoreUI m_scoreUI;
 
-
+	GameOverManager m_gameOverManager;
 
 };

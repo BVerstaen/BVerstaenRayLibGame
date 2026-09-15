@@ -65,7 +65,7 @@ void HazardManager::UpdateLogic(float deltaTime, float backgroundSpeed, float gr
 
 void HazardManager::UpdateRender()
 {
-	for (Hazard hazard : m_hazardList)
+	for (Hazard& hazard : m_hazardList)
 	{
 		hazard.UpdateRender();
 	}
@@ -77,7 +77,7 @@ bool HazardManager::UpdateCollisions(const Rectangle& playerRectangle)
 
 	//Cache rect because sizes are the same
 	Rectangle currentHazardRect = Rectangle(0, 0, 48, 48);
-	for (Hazard hazard : m_hazardList)
+	for (Hazard& hazard : m_hazardList)
 	{
 		const Vector2& hazardPos = hazard.GetPosition();
 		//Don't check knife if hasn't reach player, cause can't be in range

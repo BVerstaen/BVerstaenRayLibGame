@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include "raylib.h"
 #include <vector>
+#include "raylib.h"
+#include <Core/GameFont.h>
 
 class GameOverManager
 {
@@ -11,13 +12,18 @@ private:
 	{
 	public:
 		GameOverText();
-		GameOverText(std::string text, Vector2 pos, float delay, Color col = WHITE);
+		GameOverText(std::string text, Vector2 pos, float delay, float rotationAmp, float textSize = -1, Color col = WHITE, bool addScoreAtEnd = false);
 
 	public:
 		std::string Text;
 		Vector2 Position;
+
 		float Delay;
-		Color Color;
+		float Size;
+		float Amplitude;
+		Color TextColor;
+
+		bool AddScoreToText;
 	};
 #pragma endregion
 
@@ -25,10 +31,13 @@ public:
 	GameOverManager();
 
 public:
-	void UpdateLogic(float deltaTime);
-	void UpdateRender(float deltaTime);
+	bool UpdateLogic(float deltaTime);
+	void UpdateRender(int currentScore);
 
 private:
+	GameFont& m_gameFont;
 	std::vector<GameOverText> m_gameOverTextList;
+
 	float m_counter;
+	float m_pressAnyKeyCounter;
 };
