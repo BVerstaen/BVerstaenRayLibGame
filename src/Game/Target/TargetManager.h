@@ -3,6 +3,8 @@
 #include <vector>
 #include "raylib.h"
 #include "Target.h"
+#include <Core\ScoreSystem.h>
+
 
 class TargetManager
 {
@@ -20,7 +22,7 @@ private:
 public:
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
 	void UpdateRender(float deltaTime);
-	void UpdateCollisions(const std::vector<Vector2>& projectileList, const Vector2& projectileSize);
+	void UpdateCollisions(ScoreSystem& score, const std::vector<Vector2>& projectileList, const Vector2& projectileSize);
 
 private:
 	std::vector<Target> m_targetList;
@@ -30,4 +32,5 @@ private:
 	Vector2 m_spawnDelayRange;
 
 	Vector2 m_spawnPosition;
+	int m_pointsForHit;
 };

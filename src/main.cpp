@@ -40,7 +40,7 @@ int main ()
 		playerProj.UpdateLogic(deltaTime);
 
 		targetManager.UpdateLogic(deltaTime, background.GetSpeed(), background.GetGroundLayerSpeed());
-		targetManager.UpdateCollisions(playerProj.GetProjectilePositions(), playerProj.GetProjectileSize());
+		targetManager.UpdateCollisions(scoreSys, playerProj.GetProjectilePositions(), playerProj.GetProjectileSize());
 		scoreSys.UpdateScore(deltaTime, background.GetSpeed());
 
 		if (player.CheckDeathCollisions())

@@ -2,7 +2,7 @@
 #include <string>
 #include <random>
 
-TargetManager::TargetManager():m_spawnDelayRange(Vector2(1.0f,3.0f)), m_spawnPosition(Vector2(928,474))
+TargetManager::TargetManager():m_spawnDelayRange(Vector2(1.0f,3.0f)), m_spawnPosition(Vector2(928,474)), m_pointsForHit(50)
 {
 	m_spawnDelay = GetRandomDelay();
 
@@ -70,10 +70,10 @@ void TargetManager::UpdateRender(float deltaTime)
 	}
 }
 
-void TargetManager::UpdateCollisions(const std::vector<Vector2>& projectileList, const Vector2& projectileSize)
+void TargetManager::UpdateCollisions(ScoreSystem& score, const std::vector<Vector2>& projectileList, const Vector2& projectileSize)
 {
 	const float minimumYPos = m_spawnPosition.y;
-	
+
 	//Cache rect because sizes are the same
 	Rectangle currentProjectileRect = Rectangle(0, 0, projectileSize.x, projectileSize.y);
 	Rectangle currentTargetRect = Rectangle(0, 0, 64, 64);
@@ -95,6 +95,7 @@ void TargetManager::UpdateCollisions(const std::vector<Vector2>& projectileList,
 
 			if (CheckCollisionRecs(currentProjectileRect, currentTargetRect))
 			{
+				score.CurrentScore += m_pointsForHit;
 				It = m_targetList.erase(It);
 			}
 			else
