@@ -9,8 +9,9 @@
 #include <Game/Target/TargetManager.h>
 #include <Game/Player/PlayerProjectile.h>
 #include <Game/ScoreUI.h>
+#include <Game/Hazard/HazardManager.h>
 
-int main ()
+int main()
 {
 	//Init window & ressources
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
@@ -24,7 +25,9 @@ int main ()
 	Background background;
 	Player player = Player(&background);
 	PlayerProjectile playerProj = PlayerProjectile();
+
 	TargetManager targetManager = TargetManager();
+	HazardManager hazardManager = HazardManager();
 
 	ScoreUI scoreUI = ScoreUI();
 
@@ -45,9 +48,12 @@ int main ()
 
 		targetManager.UpdateLogic(deltaTime, background.GetSpeed(), background.GetGroundLayerSpeed());
 		targetManager.UpdateCollisions(scoreSys, playerProj.GetProjectilePositions(), playerProj.GetProjectileSize());
+
+		hazardManager.UpdateLogic(deltaTime, background.GetSpeed(), background.GetGroundLayerSpeed());
+
 		scoreSys.UpdateScore(deltaTime, background.GetSpeed());
 
-		if (player.CheckDeathCollisions())
+		if (player.CheckGroundCollision() || hazardManager.UpdateCollisions(player.GetRectangle()))
 			break;
 
 		//RENDER UPDATE

@@ -22,7 +22,7 @@ public:
 public:
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
 	void UpdateRender(float deltaTime);
-	void UpdateCollisions(ScoreSystem& score, const Rectangle& playerRectangle);
+	bool UpdateCollisions(const Rectangle& playerRectangle);
 
 private:
 	std::vector<Hazard> m_hazardList;

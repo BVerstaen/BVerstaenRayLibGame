@@ -88,7 +88,7 @@ void Player::UpdateRender(float deltaTime)
 	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
 }
 
-const bool Player::CheckDeathCollisions()
+const bool Player::CheckGroundCollisions()
 {
 	//Ground collision
 	const float groundYPosition = 430.0f;
@@ -103,7 +103,13 @@ const bool Player::IsFlapping() const
 	return m_currentFlapAnimationTimer > 0.0f;
 }
 
-const Vector2 Player::GetPosition() const
+const Vector2& Player::GetPosition() const
 {
 	return m_position;
+}
+
+const Rectangle& Player::GetRectangle() const
+{
+	Texture currentTexture = IsFlapping() ? m_flapTexture : m_idleTexture;
+	return Rectangle(m_position.x, m_position.y, currentTexture.width, currentTexture.height)
 }

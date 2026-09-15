@@ -1,7 +1,8 @@
 #include "HazardManager.h"
+#include <Core/Random.h>
 #include <random>
 
-HazardManager::HazardManager() :m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_spawnPosition(Vector2(928, 474))
+HazardManager::HazardManager() :m_spawnPosition(Vector2(928, 474)), m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_baseRotationRange(Vector2(0.0f,359.0f)), m_baseSpeedRange(Vector2(-10.0f, 20.0f))
 {
 	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
 
@@ -31,12 +32,49 @@ HazardManager::~HazardManager()
 
 void HazardManager::UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed)
 {
+	//Delay logic
+	float speedMultiplier = (backgroundSpeed / 100.0f);
+	m_spawnDelay -= deltaTime * speedMultiplier;
+
+	if (m_spawnDelay <= 0)
+	{
+		Random& rand = Random::Instance();
+		m_spawnDelay = rand.RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
+
+		//Spawn new target
+		float newRotation = rand.RandomRange(m_baseRotationRange.x, m_baseRotationRange.y);
+		float newSpeed = rand.RandomRange(m_baseSpeedRange.x, m_baseSpeedRange.y);
+		m_hazardList.push_back(Hazard(m_hazardTextures[GetRandomValue(0, m_hazardTextures.size() - 1)], m_spawnPosition, newRotation, newSpeed));
+	}
+
 }
 
 void HazardManager::UpdateRender(float deltaTime)
 {
+	for (Hazard hazard : m_hazardList)
+	{
+		hazard.UpdateRender(deltaTime);
+	}
 }
 
-void HazardManager::UpdateCollisions(ScoreSystem& score, const Rectangle& playerRectangle)
+bool HazardManager::UpdateCollisions(const Rectangle& playerRectangle)
 {
+	const float minimumXPosition = playerRectangle.x + playerRectangle.width;
+
+	//Cache rect because sizes are the same
+	Rectangle currentHazardRect = Rectangle(0, 0, 48, 48);
+	for (Hazard hazard : m_hazardList)
+	{
+		const Vector2& hazardPos = hazard.GetPosition();
+		//Don't check knife if hasn't reach player, cause can't be in range
+		if (hazardPos.y > minimumXPosition)
+			continue;
+
+		//Setup rect & check collisions
+		currentHazardRect.x = hazardPos.x;
+		currentHazardRect.y = hazardPos.y;
+		if (CheckCollisionRecs(playerRectangle, currentHazardRect))
+			return true;
+	}
+	return false;
 }

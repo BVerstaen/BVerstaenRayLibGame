@@ -16,13 +16,14 @@ public:
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
 
-	const bool CheckDeathCollisions();
+	const bool CheckGroundCollisions();
 
 private:
 	const bool IsFlapping() const;
 
 public:
-	const Vector2 GetPosition() const;
+	const Vector2& GetPosition() const;
+	const Rectangle& GetRectangle() const;
 
 private:
 	Background* m_background;
