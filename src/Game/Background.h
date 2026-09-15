@@ -20,6 +20,8 @@ private:
 	};
 #pragma endregion
 
+#pragma region Constructors / Desctructors / Movement
+
 public:
 	Background();
 	~Background();
@@ -27,6 +29,11 @@ public:
 	Background& operator=(const Background& background) = delete;
 	Background(Background&& background) noexcept = delete;
 	Background& operator=(Background&& background) noexcept = delete;
+
+#pragma endregion
+
+public:
+	void ResetSpeed();
 
 	const float GetSpeed() const;
 	const float GetGroundLayerSpeed() const;
@@ -40,4 +47,5 @@ private:
 	BackgroundData m_groundLayer;
 
 	float m_speed;
+	float m_defaultSpeed;
 };

@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 
+#pragma region Background data
 
 Background::BackgroundData::BackgroundData():BackgroundTexture(Texture()), Position(Vector2(0, 0)), SpeedMultiplier(0), TextureHalfWidth(0){}
 
@@ -13,9 +14,13 @@ Background::BackgroundData::BackgroundData(Texture tex, float baseSpeed)
 	TextureHalfWidth = BackgroundTexture.width / 2;
 }
 
+#pragma endregion
 
-Background::Background() : m_speed(100.0f)
+#pragma region Constructors / Desctructors / Movement
+
+Background::Background() : m_defaultSpeed(100.0f)
 {
+	m_speed = m_defaultSpeed;
 	m_backgroundLayer = BackgroundData(LoadTexture("Sprites\\Background_0.png"), 0.0f);
 	m_foregroundLayer = BackgroundData(LoadTexture("Sprites\\Background_1.png"), 1.0f);
 	m_groundLayer = BackgroundData(LoadTexture("Sprites\\Ground.png"), 3.0f);
@@ -26,6 +31,13 @@ Background::~Background()
 	UnloadTexture(m_backgroundLayer.BackgroundTexture);
 	UnloadTexture(m_foregroundLayer.BackgroundTexture);
 	UnloadTexture(m_groundLayer.BackgroundTexture);
+}
+
+#pragma endregion
+
+void Background::ResetSpeed()
+{
+	m_speed = m_defaultSpeed;
 }
 
 const float Background::GetSpeed() const

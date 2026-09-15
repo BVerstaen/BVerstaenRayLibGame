@@ -2,11 +2,7 @@
 
 void Application::Run()
 {
-	const int screenWidth = 800;
-	const int screenHeight = 600;
-
-	m_currentGameState = GameState::TITLE;
-
+	//Setup systems
 	m_scoreSys.ResetScore();
 	m_player.Setup(&m_background);
 
@@ -15,6 +11,10 @@ void Application::Run()
 	camera.offset = Vector2(0, 0);//Vector2(screenWidth / 2.0f, screenHeight / 2.0f);
 	camera.rotation = 0.0f;
 	camera.zoom = 1.5f;
+
+	//Launch first state
+	m_currentGameState = GameState::TITLE;
+	BeginState(m_currentGameState);
 
 	//Game loop
 	while (!WindowShouldClose())
@@ -132,10 +132,13 @@ void Application::BeginState(GameState newGameState)
 	switch (newGameState)
 	{
 	case GameState::TITLE:
+		m_background.SetSpeed(500);
 		break;
 
 	case GameState::GAME:
 		m_hasReachHighScore = false;
+
+		m_background.ResetSpeed();
 		m_scoreSys.ResetScore();
 		m_player.Reset();
 		m_playerProj.Reset();
