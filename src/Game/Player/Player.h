@@ -36,6 +36,7 @@ public:
 
 private:
 	Background* m_background;
+	Vector2 m_playerSize;
 
 private:
 	Vector2 m_position;

@@ -70,7 +70,7 @@ void Application::RenderTick(float deltaTime)
 {
 	//RENDER UPDATE
 	BeginDrawing();
-	ClearBackground(RED);
+	ClearBackground(BLACK);
 
 
 	switch (m_currentGameState)
@@ -90,8 +90,10 @@ void Application::RenderTick(float deltaTime)
 		BeginMode2D(m_camera.GetCamera());
 
 		m_background.UpdateRender();
+		DrawRectangleRec(m_player.GetRectangle(), BLUE);
 		m_targetManager.UpdateRender();
 		m_player.UpdateRender(deltaTime);
+
 		m_playerProj.UpdateRender();
 		m_hazardManager.UpdateRender();
 

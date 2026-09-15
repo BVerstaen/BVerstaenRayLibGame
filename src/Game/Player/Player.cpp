@@ -15,6 +15,8 @@ Player::Player() : m_defaultPosition(Vector2(100, 300)), m_verticalVelocity(1), 
 	m_deathTexture = LoadTexture("Sprites\\Player\\Player_Death.png");
 	m_isChangingSpeed = false;
 
+	m_playerSize = Vector2(m_idleTexture.width, m_idleTexture.height);
+
 	m_flapAnimationTimer = 0.1f;
 	m_currentFlapAnimationTimer = 0.0f;
 }
@@ -135,6 +137,7 @@ const Vector2& Player::GetPosition() const
 
 const Rectangle& Player::GetRectangle() const
 {
-	Texture currentTexture = IsFlapping() ? m_flapTexture : m_idleTexture;
-	return Rectangle(m_position.x, m_position.y, currentTexture.width, currentTexture.height);
+	//Using flap collision made the game unplayable
+	//Texture currentTexture = IsFlapping() ? m_flapTexture : m_idleTexture;
+	return Rectangle(m_position.x, m_position.y, m_playerSize.x, m_playerSize.y);
 }

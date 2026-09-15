@@ -24,7 +24,7 @@ public:
 
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
 	void UpdateRender();
-	bool UpdateCollisions(const Rectangle& playerRectangle);
+	bool UpdateCollisions(Rectangle playerRectangle);
 
 private:
 	std::vector<Hazard> m_hazardList;

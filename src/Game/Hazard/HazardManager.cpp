@@ -77,7 +77,7 @@ void HazardManager::UpdateRender()
 	}
 }
 
-bool HazardManager::UpdateCollisions(const Rectangle& playerRectangle)
+bool HazardManager::UpdateCollisions(Rectangle playerRectangle)
 {
 	const float minimumXPosition = playerRectangle.x + playerRectangle.width;
 
