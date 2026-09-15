@@ -16,7 +16,7 @@ public:
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
 
-	const bool CheckGroundCollisions();
+	const bool CheckGroundCollision();
 
 private:
 	const bool IsFlapping() const;

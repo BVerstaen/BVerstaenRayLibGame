@@ -88,7 +88,7 @@ void Player::UpdateRender(float deltaTime)
 	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
 }
 
-const bool Player::CheckGroundCollisions()
+const bool Player::CheckGroundCollision()
 {
 	//Ground collision
 	const float groundYPosition = 430.0f;
