@@ -5,6 +5,7 @@
 
 constexpr int WINDOW_WIDTH = 800;
 constexpr int WINDOW_HEIGHT = 600;
+constexpr int TARGET_FPS = 60;
 
 int main()
 {
@@ -12,6 +13,7 @@ int main()
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Dragon Rampage");
 	SearchAndSetResourceDir("resources");
+	SetTargetFPS(TARGET_FPS);
 
 	Application app;
 	app.Run();

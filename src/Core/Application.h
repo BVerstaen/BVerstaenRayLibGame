@@ -26,6 +26,7 @@ private:
 	enum class GameState
 	{
 		TITLE,
+		INSTRUCTION,
 		GAME,
 		GAMEOVER
 	};

@@ -32,13 +32,21 @@ void Application::LogicTick(float deltaTime)
 		m_background.UpdateLogic(deltaTime);
 
 		if (m_titleScreen.UpdateLogic(deltaTime))
+			SwitchGameState(GameState::INSTRUCTION);
+		break;
+
+	case GameState::INSTRUCTION:
+		m_background.UpdateLogic(deltaTime);
+
+		if (m_titleScreen.UpdateLogic(deltaTime))
 			SwitchGameState(GameState::GAME);
 		break;
 
 	case GameState::GAME:
 	{
 		m_background.UpdateLogic(deltaTime);
-
+		m_camera.UpdateLogic(deltaTime);
+		
 		m_player.UpdateLogic(deltaTime);
 		if (m_player.IsFiring())
 			m_playerProj.SpawnProjectile(m_player.GetPosition());
@@ -85,9 +93,20 @@ void Application::RenderTick(float deltaTime)
 		m_titleScreen.UpdateRender(m_scoreSys.HighScoreList);
 		break;
 
+	case GameState::INSTRUCTION:
+		BeginMode2D(m_camera.GetCamera());
+
+		m_background.UpdateRender();
+
+		EndMode2D();
+
+		m_titleScreen.UpdateInstruction();
+		break;
+
 	case GameState::GAME:
 	{
 		BeginMode2D(m_camera.GetCamera());
+		m_camera.BeginScissor(m_player.GetRectangle());
 
 		m_background.UpdateRender();
 		m_targetManager.UpdateRender();
@@ -96,6 +115,7 @@ void Application::RenderTick(float deltaTime)
 		m_playerProj.UpdateRender();
 		m_hazardManager.UpdateRender();
 
+		m_camera.EndScissor();
 		EndMode2D();
 
 		m_scoreUI.DrawScore(deltaTime, m_scoreSys.CurrentScore);
@@ -141,9 +161,13 @@ void Application::BeginState(GameState newGameState)
 		m_audio.PlayMusicFromList(AudioManager::MusicList::TITLE);
 		break;
 
+	case GameState::INSTRUCTION:
+		break;
+
 	case GameState::GAME:
 		m_hasReachHighScore = false;
 
+		m_camera.Reset();
 		m_background.ResetSpeed();
 		m_scoreSys.ResetScore();
 		m_player.Reset();
@@ -170,15 +194,16 @@ void Application::BeginState(GameState newGameState)
 
 void Application::EndState(GameState oldGameState)
 {
-	m_audio.StopCurrentMusic();
 
 	switch (oldGameState)
 	{
 	case GameState::TITLE:
 		break;
+
 	case GameState::GAME:
-		break;
 	case GameState::GAMEOVER:
+	case GameState::INSTRUCTION:
+		m_audio.StopCurrentMusic();
 		break;
 
 	default:

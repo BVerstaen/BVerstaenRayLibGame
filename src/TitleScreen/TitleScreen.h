@@ -14,8 +14,11 @@ public:
 public:
 	bool UpdateLogic(float deltaTime);
 	void UpdateRender(const std::vector<int> highscoreList);
+	void UpdateInstruction();
 
 private:
+	Texture m_instructionTexture;
+
 	float m_titleHue;
 	const float m_hueSpeed;
 

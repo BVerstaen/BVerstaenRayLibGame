@@ -2,9 +2,10 @@
 #include <Core/GameFont.h>
 #include <Core/ColorUtilities.h>
 
-TitleScreen::TitleScreen() : m_highScoreStartPosition(Vector2(300, 300)), m_highScoreGap(40), m_hueSpeed(1.0f)
+TitleScreen::TitleScreen() : m_highScoreStartPosition(Vector2(300, 270)), m_highScoreGap(40), m_hueSpeed(1.0f)
 {
 	m_titleHue = 0.0f;
+	m_instructionTexture = LoadTexture("Sprites\\Instruction.png");
 }
 
 //returns true if a key is pressed
@@ -32,4 +33,13 @@ void TitleScreen::UpdateRender(const std::vector<int> highscoreList)
 		GameFont::Instance().PrintText(std::to_string(i+1) + " - " + highScoreText, newPosition);
 		newPosition.y += m_highScoreGap;
 	}
+
+	GameFont::Instance().PrintTextPro("Press any key", Vector2(400, 450), 0.0f, -1, WHITE);
+
+}
+
+void TitleScreen::UpdateInstruction()
+{
+	DrawTexture(m_instructionTexture, 100, 150, WHITE);
+	GameFont::Instance().PrintTextPro("Press any key", Vector2(400, 475), 0.0f, -1, WHITE);
 }
