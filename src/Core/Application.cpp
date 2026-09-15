@@ -68,11 +68,11 @@ void Application::RenderTick(float deltaTime)
 
 	case GameState::GAME:
 	{
-		m_background.UpdateRender(deltaTime);
-		m_targetManager.UpdateRender(deltaTime);
+		m_background.UpdateRender();
+		m_targetManager.UpdateRender();
 		m_player.UpdateRender(deltaTime);
-		m_playerProj.UpdateRender(deltaTime);
-		m_hazardManager.UpdateRender(deltaTime);
+		m_playerProj.UpdateRender();
+		m_hazardManager.UpdateRender();
 
 		m_scoreUI.DrawScore(deltaTime, m_scoreSys.CurrentScore);
 		break;
@@ -80,11 +80,11 @@ void Application::RenderTick(float deltaTime)
 
 	case GameState::GAMEOVER:
 	{
-		m_background.UpdateRender(deltaTime);
-		m_targetManager.UpdateRender(deltaTime);
-		m_player.UpdateRender(deltaTime);
-		m_playerProj.UpdateRender(deltaTime);
-		m_hazardManager.UpdateRender(deltaTime);
+		m_background.UpdateRender();
+		m_targetManager.UpdateRender();
+		m_player.RenderDeath();
+		m_playerProj.UpdateRender();
+		m_hazardManager.UpdateRender();
 		break;
 	}
 

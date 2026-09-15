@@ -5,6 +5,8 @@
 
 class PlayerProjectile
 {
+#pragma region Constructors / Desctructors / Movement
+
 public:
 	PlayerProjectile();
 	~PlayerProjectile();
@@ -13,11 +15,13 @@ public:
 	PlayerProjectile(PlayerProjectile&& playerProjectile) noexcept = delete;
 	PlayerProjectile& operator=(PlayerProjectile&& playerProjectile) noexcept = delete;
 
+#pragma endregion
+
 public:
 	void SpawnProjectile(Vector2 playerPos);
 
 	void UpdateLogic(float deltaTime);
-	void UpdateRender(float deltaTime);
+	void UpdateRender();
 
 public:
 	const std::vector<Vector2>& GetProjectilePositions() const;

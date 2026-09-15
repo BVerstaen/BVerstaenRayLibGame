@@ -8,6 +8,8 @@
 
 class TargetManager
 {
+#pragma region Constructors / Desctructors / Movement
+
 public:
 	TargetManager();
 	~TargetManager();
@@ -16,9 +18,11 @@ public:
 	TargetManager(TargetManager&& targetManager) noexcept = delete;
 	TargetManager& operator=(TargetManager&& targetManager) noexcept = delete;
 
+#pragma endregion 
+
 public:
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
-	void UpdateRender(float deltaTime);
+	void UpdateRender();
 	void UpdateCollisions(ScoreSystem& score, const std::vector<Vector2>& projectileList, const Vector2& projectileSize);
 
 private:

@@ -50,7 +50,7 @@ void Background::UpdateLogic(float deltaTime)
 	m_groundLayer.Position.x = std::fmod(m_groundLayer.Position.x - (deltaTime * (m_speed * m_groundLayer.SpeedMultiplier)), m_groundLayer.TextureHalfWidth);
 }
 
-void Background::UpdateRender(float deltaTime)
+void Background::UpdateRender()
 {
 	DrawTextureV(m_backgroundLayer.BackgroundTexture, m_backgroundLayer.Position, WHITE);
 	DrawTextureV(m_foregroundLayer.BackgroundTexture, m_foregroundLayer.Position, WHITE);

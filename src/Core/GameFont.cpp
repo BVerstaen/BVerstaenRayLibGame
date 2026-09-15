@@ -2,6 +2,7 @@
 #include <string>
 #include <stdexcept>
 
+#pragma region Constructors / Desctructors / Movement
 GameFont::GameFont():m_defaultSize(32), m_spacing(5)
 {
 	const char* gameFontPath = "Font\\GameFont.ttf";
@@ -18,6 +19,7 @@ GameFont::~GameFont()
 	UnloadFont(m_gameFont);
 	s_instance = nullptr;
 }
+#pragma endregion
 
 
 #pragma region Singleton

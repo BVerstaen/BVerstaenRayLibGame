@@ -1,7 +1,9 @@
 #include "PlayerProjectile.h"
 #include "raymath.h"
 
-PlayerProjectile::PlayerProjectile(): m_projectileLimit(5), m_projectileDirection(Vector2(0.5f,0.5f)), m_projectileSpeed(300.0f), m_spawnOffset(Vector2(140, 30))
+#pragma region Constructors / Desctructors / Movement
+
+PlayerProjectile::PlayerProjectile(): m_projectileLimit(5), m_projectileDirection(Vector2(0.5f,0.5f)), m_projectileSpeed(900.0f), m_spawnOffset(Vector2(140, 30))
 {
 	m_projectileTexture = LoadTexture("Sprites\\Player\\PlayerProjectile.png");
 	m_projectileSize = Vector2(m_projectileTexture.width, m_projectileTexture.height);
@@ -11,6 +13,8 @@ PlayerProjectile::~PlayerProjectile()
 {
 	UnloadTexture(m_projectileTexture);
 }
+
+#pragma endregion
 
 void PlayerProjectile::SpawnProjectile(Vector2 playerPos)
 {
@@ -34,7 +38,7 @@ void PlayerProjectile::UpdateLogic(float deltaTime)
 	}
 }
 
-void PlayerProjectile::UpdateRender(float deltaTime)
+void PlayerProjectile::UpdateRender()
 {
 	for (Vector2 pos : m_projectilePositions)
 	{

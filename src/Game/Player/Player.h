@@ -5,6 +5,8 @@ class Background;
 
 class Player
 {
+#pragma region Constructors / Desctructors / Movement
+
 public:
 	Player();
 	~Player();
@@ -13,9 +15,12 @@ public:
 	Player(Player&& player) noexcept = delete;
 	Player& operator=(Player&& player) noexcept = delete;
 
+#pragma endregion
+
 	void Setup(Background* background);
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
+	void RenderDeath();
 
 	const bool IsFiring();
 	const bool CheckGroundCollision();

@@ -12,7 +12,7 @@ bool Target::UpdateLogic(float deltaTime, float groundSpeed)
 	return m_position.x <= -m_targetTexture.width;
 }
 
-void Target::UpdateRender(float deltaTime)
+void Target::UpdateRender()
 {
 	DrawTextureV(m_targetTexture, m_position, WHITE);
 }

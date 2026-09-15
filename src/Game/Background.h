@@ -3,6 +3,7 @@
 
 class Background
 {
+#pragma region Background data
 
 private:
 	struct BackgroundData
@@ -17,6 +18,7 @@ private:
 			float SpeedMultiplier;
 			float TextureHalfWidth;
 	};
+#pragma endregion
 
 public:
 	Background();
@@ -30,7 +32,7 @@ public:
 	const float GetGroundLayerSpeed() const;
 	void SetSpeed(float newSpeed);
 	void UpdateLogic(float deltaTime);
-	void UpdateRender(float deltaTime);
+	void UpdateRender();
 
 private:
 	BackgroundData m_backgroundLayer;

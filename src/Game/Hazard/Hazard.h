@@ -8,7 +8,7 @@ public:
 	Hazard(Texture tex, Vector2 basePosition, float baseRotation, float speed);
 
 	bool UpdateLogic(float deltaTime, float groundSpeed);
-	void UpdateRender(float deltaTime);
+	void UpdateRender();
 
 public:
 	const Vector2 GetPosition() const;

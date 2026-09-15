@@ -2,6 +2,8 @@
 #include <Core/Random.h>
 #include <random>
 
+#pragma region Constructors / Desctructors / Movement
+
 HazardManager::HazardManager() :m_spawnPositionYRange(Vector2(100, 350)), m_spawnDelayRange(Vector2(1.0f, 3.0f)), m_baseRotationRange(Vector2(0.0f,359.0f)), m_baseSpeedRange(Vector2(1.0f, 5.0f))
 {
 	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
@@ -28,6 +30,8 @@ HazardManager::~HazardManager()
 		UnloadTexture(texture);
 	}
 }
+
+#pragma endregion
 
 
 void HazardManager::UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed)
@@ -59,11 +63,11 @@ void HazardManager::UpdateLogic(float deltaTime, float backgroundSpeed, float gr
 	}
 }
 
-void HazardManager::UpdateRender(float deltaTime)
+void HazardManager::UpdateRender()
 {
 	for (Hazard hazard : m_hazardList)
 	{
-		hazard.UpdateRender(deltaTime);
+		hazard.UpdateRender();
 	}
 }
 

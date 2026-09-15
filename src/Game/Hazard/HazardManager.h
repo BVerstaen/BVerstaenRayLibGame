@@ -21,7 +21,7 @@ public:
 
 public:
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
-	void UpdateRender(float deltaTime);
+	void UpdateRender();
 	bool UpdateCollisions(const Rectangle& playerRectangle);
 
 private:

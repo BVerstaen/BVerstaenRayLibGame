@@ -5,6 +5,7 @@
 
 class GameFont
 {
+#pragma region Constructors / Desctructors / Movement
 public:
 	GameFont();
 	~GameFont();
@@ -12,6 +13,7 @@ public:
 	GameFont& operator=(const GameFont& font) = delete;
 	GameFont(GameFont&& font) noexcept = delete;
 	GameFont& operator=(GameFont&& font) noexcept = delete;
+#pragma endregion
 
 #pragma region Singleton
 

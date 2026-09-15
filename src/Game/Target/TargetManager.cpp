@@ -2,6 +2,8 @@
 #include <string>
 #include "Core/Random.h"
 
+#pragma region Constructors / Desctructors / Movement
+
 TargetManager::TargetManager():m_spawnDelayRange(Vector2(1.0f,3.0f)), m_spawnPosition(Vector2(928,474)), m_pointsForHit(50)
 {
 	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
@@ -29,6 +31,8 @@ TargetManager::~TargetManager()
 	}
 }
 
+#pragma endregion
+
 void TargetManager::UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed)
 {
 	//Delay logic
@@ -54,11 +58,11 @@ void TargetManager::UpdateLogic(float deltaTime, float backgroundSpeed, float gr
 	}
 }
 
-void TargetManager::UpdateRender(float deltaTime)
+void TargetManager::UpdateRender()
 {
 	for (Target target : m_targetList)
 	{
-		target.UpdateRender(deltaTime);
+		target.UpdateRender();
 	}
 }
 

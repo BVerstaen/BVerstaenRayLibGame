@@ -13,7 +13,7 @@ bool Hazard::UpdateLogic(float deltaTime, float groundSpeed)
 	return m_position.x <= -m_hazardTexture.width;
 }
 
-void Hazard::UpdateRender(float deltaTime)
+void Hazard::UpdateRender()
 {
 	//DrawTextureEx(m_hazardTexture, m_position, m_rotation, 1.0f, WHITE);
 

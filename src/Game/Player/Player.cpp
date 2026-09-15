@@ -5,8 +5,8 @@
 #include <iostream>
 #include <algorithm>
 
-
-Player::Player() : m_position(Vector2(100, 300)), m_verticalVelocity(1), m_gravityForce(50.0f)
+#pragma region Constructors / Desctructors / Movement
+Player::Player() : m_position(Vector2(100, 300)), m_verticalVelocity(1), m_gravityForce(50.0f), m_background(nullptr), m_defaultSpeed(0),m_fastSpeed(0),m_slowSpeed(0)
 {
 	m_idleTexture = LoadTexture("Sprites\\Player\\Player_Idle.png");
 	m_flapTexture = LoadTexture("Sprites\\Player\\Player_Flap.png");
@@ -23,6 +23,7 @@ Player::~Player()
 	UnloadTexture(m_flapTexture);
 	UnloadTexture(m_deathTexture);
 }
+#pragma endregion
 
 void Player::Setup(Background* background)
 {
@@ -89,6 +90,11 @@ void Player::UpdateRender(float deltaTime)
 		m_currentFlapAnimationTimer -= deltaTime;
 
 	DrawTextureV(IsFlapping() ? m_flapTexture : m_idleTexture, m_position, WHITE);
+}
+
+void Player::RenderDeath()
+{
+	DrawTextureV(m_deathTexture, m_position, WHITE);
 }
 
 const bool Player::IsFiring()
