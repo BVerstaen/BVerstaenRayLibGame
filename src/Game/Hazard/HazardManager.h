@@ -20,6 +20,8 @@ public:
 
 
 public:
+	void Reset();
+
 	void UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed);
 	void UpdateRender();
 	bool UpdateCollisions(const Rectangle& playerRectangle);

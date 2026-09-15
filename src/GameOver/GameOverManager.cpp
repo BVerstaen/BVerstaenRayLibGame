@@ -15,7 +15,7 @@ GameOverManager::GameOverText::GameOverText(std::string text, Vector2 pos, float
 #pragma endregion
 
 
-GameOverManager::GameOverManager() : m_counter(0), m_gameFont(GameFont::Instance()), m_pressAnyKeyCounter(5)
+GameOverManager::GameOverManager() : m_counter(0), m_gameFont(GameFont::Instance()), m_pressAnyKeyCounter(1.0f)
 {
 	//Add text
 	m_gameOverTextList.push_back(GameOverText("GAME OVER", Vector2(400, 150), 0.0f, 10.0f, 60.0f, RED));

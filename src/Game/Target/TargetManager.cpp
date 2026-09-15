@@ -33,6 +33,13 @@ TargetManager::~TargetManager()
 
 #pragma endregion
 
+
+void TargetManager::Reset()
+{
+	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
+	m_targetList.clear();
+}
+
 void TargetManager::UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed)
 {
 	//Delay logic

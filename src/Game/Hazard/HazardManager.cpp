@@ -34,6 +34,12 @@ HazardManager::~HazardManager()
 #pragma endregion
 
 
+void HazardManager::Reset()
+{
+	m_spawnDelay = Random::Instance().RandomRange(m_spawnDelayRange.x, m_spawnDelayRange.y);
+	m_hazardList.clear();
+}
+
 void HazardManager::UpdateLogic(float deltaTime, float backgroundSpeed, float groundSpeed)
 {
 	//Delay logic

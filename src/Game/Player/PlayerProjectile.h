@@ -18,6 +18,7 @@ public:
 #pragma endregion
 
 public:
+	void Reset();
 	void SpawnProjectile(Vector2 playerPos);
 
 	void UpdateLogic(float deltaTime);

@@ -29,14 +29,23 @@ private:
 public:
 	void Run();
 
+#pragma region Tick
+
 private:
 	void LogicTick(float deltaTime);
 	void RenderTick(float deltaTime);
+
+#pragma endregion
+
+#pragma region Change state
 
 private:
 	void BeginState(GameState newGameState);
 	void EndState(GameState oldGameState);
 	void SwitchGameState(GameState newGameState);
+
+#pragma endregion
+
 
 private:
 	GameState m_currentGameState;

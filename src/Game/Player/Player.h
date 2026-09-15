@@ -18,6 +18,8 @@ public:
 #pragma endregion
 
 	void Setup(Background* background);
+	void Reset();
+
 	void UpdateLogic(float deltaTime);
 	void UpdateRender(float deltaTime);
 	void RenderDeath();
@@ -37,6 +39,7 @@ private:
 
 private:
 	Vector2 m_position;
+	Vector2 m_defaultPosition;
 	float m_verticalVelocity;
 	float m_gravityForce;
 

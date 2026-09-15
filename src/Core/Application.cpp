@@ -16,6 +16,8 @@ void Application::Run()
 	}	
 }
 
+#pragma region Tick
+
 void Application::LogicTick(float deltaTime)
 {
 	//LOGIC UPDATE
@@ -98,17 +100,30 @@ void Application::RenderTick(float deltaTime)
 	EndDrawing();
 }
 
+#pragma endregion
+
+
+#pragma region Change state
+
 void Application::BeginState(GameState newGameState)
 {
-	switch (m_currentGameState)
+	switch (newGameState)
 	{
 	case GameState::TITLE:
 		break;
+
 	case GameState::GAME:
+		m_scoreSys.ResetScore();
+		m_player.Reset();
+		m_playerProj.Reset();
+		m_hazardManager.Reset();
+		m_targetManager.Reset();
 		break;
+
 	case GameState::GAMEOVER:
 		m_scoreSys.AddScoreToHighScore();
 		break;
+
 	default:
 		TraceLog(LOG_ERROR, "Unknown game state");
 		break;
@@ -117,7 +132,7 @@ void Application::BeginState(GameState newGameState)
 
 void Application::EndState(GameState oldGameState)
 {
-	switch (m_currentGameState)
+	switch (oldGameState)
 	{
 	case GameState::TITLE:
 		break;
@@ -138,3 +153,4 @@ void Application::SwitchGameState(GameState newGameState)
 	m_currentGameState = newGameState;
 }
 
+#pragma endregion

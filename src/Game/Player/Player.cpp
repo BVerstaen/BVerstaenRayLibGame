@@ -6,8 +6,9 @@
 #include <algorithm>
 
 #pragma region Constructors / Desctructors / Movement
-Player::Player() : m_position(Vector2(100, 300)), m_verticalVelocity(1), m_gravityForce(50.0f), m_background(nullptr), m_defaultSpeed(0),m_fastSpeed(0),m_slowSpeed(0)
+Player::Player() : m_defaultPosition(Vector2(100, 300)), m_verticalVelocity(1), m_gravityForce(50.0f), m_background(nullptr), m_defaultSpeed(0), m_fastSpeed(0), m_slowSpeed(0)
 {
+	m_position = m_defaultPosition;
 	m_idleTexture = LoadTexture("Sprites\\Player\\Player_Idle.png");
 	m_flapTexture = LoadTexture("Sprites\\Player\\Player_Flap.png");
 	m_deathTexture = LoadTexture("Sprites\\Player\\Player_Death.png");
@@ -34,6 +35,13 @@ void Player::Setup(Background* background)
 	m_slowSpeed = m_background->GetSpeed() * 0.5f;
 	m_defaultSpeed = m_background->GetSpeed();
 	m_fastSpeed = m_background->GetSpeed() * 1.5f;
+}
+
+void Player::Reset()
+{
+	m_position = m_defaultPosition;
+	m_verticalVelocity = 1.0f;
+	m_currentFlapAnimationTimer = 0.0f;
 }
 
 void Player::UpdateLogic(float deltaTime)
