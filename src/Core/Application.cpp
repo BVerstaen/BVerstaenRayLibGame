@@ -29,18 +29,22 @@ void Application::LogicTick(float deltaTime)
 	switch (m_currentGameState)
 	{
 	case GameState::TITLE:
+	{
 		m_background.UpdateLogic(deltaTime);
 
 		if (m_titleScreen.UpdateLogic(deltaTime))
 			SwitchGameState(GameState::INSTRUCTION);
 		break;
+	}
 
 	case GameState::INSTRUCTION:
+	{
 		m_background.UpdateLogic(deltaTime);
 
 		if (m_titleScreen.UpdateLogic(deltaTime))
 			SwitchGameState(GameState::GAME);
 		break;
+	}
 
 	case GameState::GAME:
 	{
@@ -64,9 +68,11 @@ void Application::LogicTick(float deltaTime)
 	}
 
 	case GameState::GAMEOVER:
+	{
 		if (m_gameOverManager.UpdateLogic(deltaTime))
 			SwitchGameState(GameState::TITLE);
 		break;
+	}
 
 	default:
 		TraceLog(LOG_ERROR, "Unknown game state");
@@ -80,10 +86,10 @@ void Application::RenderTick(float deltaTime)
 	BeginDrawing();
 	ClearBackground(BLACK);
 
-
 	switch (m_currentGameState)
 	{
 	case GameState::TITLE:
+	{
 		BeginMode2D(m_camera.GetCamera());
 
 		m_background.UpdateRender();
@@ -92,8 +98,10 @@ void Application::RenderTick(float deltaTime)
 
 		m_titleScreen.UpdateRender(m_scoreSys.HighScoreList);
 		break;
+	}
 
 	case GameState::INSTRUCTION:
+	{
 		BeginMode2D(m_camera.GetCamera());
 
 		m_background.UpdateRender();
@@ -102,6 +110,7 @@ void Application::RenderTick(float deltaTime)
 
 		m_titleScreen.UpdateInstruction();
 		break;
+	}
 
 	case GameState::GAME:
 	{
@@ -148,7 +157,6 @@ void Application::RenderTick(float deltaTime)
 
 #pragma endregion
 
-
 #pragma region Change state
 
 void Application::BeginState(GameState newGameState)
@@ -156,15 +164,18 @@ void Application::BeginState(GameState newGameState)
 	switch (newGameState)
 	{
 	case GameState::TITLE:
+	{
 		m_background.SetSpeed(500);
 
 		m_audio.PlayMusicFromList(AudioManager::MusicList::TITLE);
 		break;
+	}
 
 	case GameState::INSTRUCTION:
 		break;
 
 	case GameState::GAME:
+	{
 		m_hasReachHighScore = false;
 
 		m_camera.Reset();
@@ -177,14 +188,17 @@ void Application::BeginState(GameState newGameState)
 
 		m_audio.PlayMusicFromList(AudioManager::MusicList::GAME);
 		break;
+	}
 
 	case GameState::GAMEOVER:
+	{
 		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERDEATH);
 		m_hasReachHighScore = m_scoreSys.AddScoreToHighScore();
 		m_gameOverManager.Reset();
 
 		m_audio.PlayMusicFromList(AudioManager::MusicList::GAMEOVER);
 		break;
+	}
 
 	default:
 		TraceLog(LOG_ERROR, "Unknown game state");
@@ -194,7 +208,6 @@ void Application::BeginState(GameState newGameState)
 
 void Application::EndState(GameState oldGameState)
 {
-
 	switch (oldGameState)
 	{
 	case GameState::TITLE:

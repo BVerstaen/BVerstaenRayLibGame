@@ -2,6 +2,8 @@
 #include <Core/GameFont.h>
 #include <Core/ColorUtilities.h>
 
+#pragma region Constructors / Desctructors / Movement
+
 TitleScreen::TitleScreen() : m_highScoreStartPosition(Vector2(100, 270)), m_highScoreGap(75), m_hueSpeed(1.0f)
 {
 	m_titleHue = 0.0f;
@@ -31,11 +33,12 @@ TitleScreen::~TitleScreen()
 	}
 }
 
+#pragma endregion
+
 //returns true if a key is pressed
 bool TitleScreen::UpdateLogic(float deltaTime)
 {
 	m_titleHue += deltaTime * m_hueSpeed;
-
 	return GetKeyPressed();
 }
 

@@ -3,6 +3,8 @@
 #include "Random.h"
 #include <string>
 
+#pragma region Constructors / Desctructors / Movement
+
 AudioManager::AudioManager()
 {
 	//Singleton
@@ -47,6 +49,7 @@ AudioManager::~AudioManager()
 	CloseAudioDevice();
 }
 
+#pragma endregion
 
 #pragma region Singleton
 
@@ -59,6 +62,7 @@ AudioManager& AudioManager::Instance()
 	return *s_instance;
 }
 
+#pragma endregion
 
 void AudioManager::PlaySoundFromList(SoundList soundToPlay)
 {
