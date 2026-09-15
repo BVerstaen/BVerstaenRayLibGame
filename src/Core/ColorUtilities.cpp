@@ -17,6 +17,7 @@ Color ColorUtilities::ColorFromHue(float hue)
 	newColor.r = 255 * (1 - std::max(std::min(std::min(r, 4 - r), 1.0f), 0.0f));
 	newColor.g = 255 * (1 - std::max(std::min(std::min(g, 4 - g), 1.0f), 0.0f));
 	newColor.b = 255 * (1 - std::max(std::min(std::min(b, 4 - b), 1.0f), 0.0f));
+	newColor.a = 255;
 
 	return newColor;
 }
