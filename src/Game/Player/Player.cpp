@@ -91,7 +91,7 @@ void Player::UpdateRender(float deltaTime)
 const bool Player::CheckGroundCollision()
 {
 	//Ground collision
-	const float groundYPosition = 430.0f;
+	const float groundYPosition = 480.0f;
 	if (m_position.y >= groundYPosition)
 		return true;
 
@@ -111,5 +111,5 @@ const Vector2& Player::GetPosition() const
 const Rectangle& Player::GetRectangle() const
 {
 	Texture currentTexture = IsFlapping() ? m_flapTexture : m_idleTexture;
-	return Rectangle(m_position.x, m_position.y, currentTexture.width, currentTexture.height)
+	return Rectangle(m_position.x, m_position.y, currentTexture.width, currentTexture.height);
 }

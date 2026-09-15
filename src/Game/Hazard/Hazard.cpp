@@ -1,6 +1,6 @@
 #include "Hazard.h"
 
-Hazard::Hazard(Texture tex, Vector2 basePosition, float baseRotation, float speed): m_hazardTexture(tex), m_position(basePosition), m_rotation(baseRotation), m_speed(speed), m_rotationSpeed(20)
+Hazard::Hazard(Texture tex, Vector2 basePosition, float baseRotation, float speed): m_hazardTexture(tex), m_position(basePosition), m_rotation(baseRotation), m_speed(speed), m_rotationSpeed(500)
 {
 }
 
@@ -15,7 +15,11 @@ bool Hazard::UpdateLogic(float deltaTime, float groundSpeed)
 
 void Hazard::UpdateRender(float deltaTime)
 {
-	DrawTextureEx(m_hazardTexture, m_position, m_rotation, 1.0f, WHITE);
+	//DrawTextureEx(m_hazardTexture, m_position, m_rotation, 1.0f, WHITE);
+
+	Rectangle drawRect = Rectangle(0, 0, m_hazardTexture.width, m_hazardTexture.height);
+	Vector2 centerRect = Vector2(m_hazardTexture.width / 2, m_hazardTexture.height / 2);
+	DrawTexturePro(m_hazardTexture, drawRect, Rectangle(m_position.x, m_position.y, drawRect.width, drawRect.height), centerRect, m_rotation, WHITE);
 }
 
 const Vector2 Hazard::GetPosition() const

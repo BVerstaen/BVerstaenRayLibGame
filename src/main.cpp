@@ -64,6 +64,7 @@ int main()
 		targetManager.UpdateRender(deltaTime);
 		player.UpdateRender(deltaTime);
 		playerProj.UpdateRender(deltaTime);
+		hazardManager.UpdateRender(deltaTime);
 
 		scoreUI.DrawScore(scoreSys.CurrentScore);
 

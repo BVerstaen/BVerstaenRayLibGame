@@ -31,7 +31,7 @@ private:
 	float m_spawnDelay;
 	Vector2 m_spawnDelayRange;
 
-	Vector2 m_spawnPosition;
+	Vector2 m_spawnPositionYRange;
 	Vector2 m_baseRotationRange;
 	Vector2 m_baseSpeedRange;
 };
