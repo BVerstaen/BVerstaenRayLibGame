@@ -7,6 +7,7 @@
 #include <Core/GameFont.h>
 #include <Game/Target/TargetManager.h>
 #include <Game/Player/PlayerProjectile.h>
+#include <Game/ScoreUI.h>
 
 int main ()
 {
@@ -23,6 +24,7 @@ int main ()
 	PlayerProjectile playerProj = PlayerProjectile();
 	TargetManager targetManager = TargetManager();
 
+	ScoreUI scoreUI = ScoreUI();
 
 	scoreSys.ResetScore();
 	//Game loop
@@ -55,10 +57,11 @@ int main ()
 		player.UpdateRender(deltaTime);
 		playerProj.UpdateRender(deltaTime);
 
-		font.PrintText(std::to_string(scoreSys.CurrentScore), Vector2(30, 10));
+		scoreUI.DrawScore(scoreSys.CurrentScore);
 
 		EndDrawing();
 	}
+	scoreSys.AddScoreToHighScore();
 
 	CloseWindow();
 	return 0;
