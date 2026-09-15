@@ -8,6 +8,11 @@ class TitleScreen
 
 public:
 	TitleScreen();
+	~TitleScreen();
+	TitleScreen(const TitleScreen& titleScreen) = delete;
+	TitleScreen& operator=(const TitleScreen& titleScreen) = delete;
+	TitleScreen(TitleScreen&& titleScreen) noexcept = delete;
+	TitleScreen& operator=(TitleScreen&& titleScreen) noexcept = delete;
 
 #pragma endregion
 
@@ -17,6 +22,7 @@ public:
 	void UpdateInstruction();
 
 private:
+	std::vector<Texture> m_medalsTextures;
 	Texture m_instructionTexture;
 
 	float m_titleHue;
