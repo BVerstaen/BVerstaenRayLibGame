@@ -10,6 +10,9 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{323BAF0A-9E51-ADA0-E7C8-38C2531E7E28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Hazard">
+      <UniqueIdentifier>{7BDEBE71-6703-0EF2-904E-F3817CD20C10}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Game\Player">
       <UniqueIdentifier>{0EE02185-FA04-7105-2350-56950FD46F23}</UniqueIdentifier>
     </Filter>
@@ -24,6 +27,9 @@
     </Filter>
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{6A21415D-D637-3FF3-1FAF-CA148B04107B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Hazard">
+      <UniqueIdentifier>{B395D8EA-9FBA-276B-C805-0DFBB4892689}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Game\Player">
       <UniqueIdentifier>{46973BFE-32BC-8A7E-5B07-700E478B899C}</UniqueIdentifier>
@@ -60,6 +66,12 @@
     <ClInclude Include="src\Game\Background.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Hazard\Hazard.h">
+      <Filter>Header Files\Game\Hazard</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Hazard\HazardManager.h">
+      <Filter>Header Files\Game\Hazard</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Player\Player.h">
       <Filter>Header Files\Game\Player</Filter>
     </ClInclude>
@@ -89,6 +101,12 @@
     <ClCompile Include="src\Game\Background.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Hazard\Hazard.cpp">
+      <Filter>Source Files\Game\Hazard</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Hazard\HazardManager.cpp">
+      <Filter>Source Files\Game\Hazard</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\Player\Player.cpp">
       <Filter>Source Files\Game\Player</Filter>
     </ClCompile>
@@ -111,6 +129,9 @@
   <ItemGroup>
     <None Include="resources\Font\GameFont.ttf">
       <Filter>Game Resource Files\Font</Filter>
+    </None>
+    <None Include="resources\High.score">
+      <Filter>Game Resource Files</Filter>
     </None>
     <None Include="src\icon.ico">
       <Filter>Windows Resource Files</Filter>

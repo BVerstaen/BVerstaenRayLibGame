@@ -2,10 +2,10 @@
 
 #include "raylib.h"
 
-class Target 
+class Hazard
 {
 public:
-	Target(Texture tex, Vector2 basePosition);
+	Hazard(Texture tex, Vector2 basePosition, float baseRotation, float speed);
 
 	bool UpdateLogic(float deltaTime, float groundSpeed);
 	void UpdateRender(float deltaTime);
@@ -14,6 +14,9 @@ public:
 	const Vector2 GetPosition() const;
 
 private:
-	Texture m_targetTexture;
+	Texture m_hazardTexture;
 	Vector2 m_position;
+	float m_rotation;
+	float m_rotationSpeed;
+	float m_speed;
 };
