@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Game\Target">
       <UniqueIdentifier>{E87AB88D-D49F-070E-FDEA-EC9DE96E062C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameOver">
+      <UniqueIdentifier>{8ED98AF9-FA45-46F4-C339-DE512F65685C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{21EB8090-0D4E-1035-B6D3-48EBA215DCB7}</UniqueIdentifier>
     </Filter>
@@ -36,6 +39,9 @@
     </Filter>
     <Filter Include="Header Files\Game\Target">
       <UniqueIdentifier>{2032D206-0C57-2187-35A2-0617212620A5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameOver">
+      <UniqueIdentifier>{C61B9572-3288-506D-FB7B-E8CA67A772D5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game Resource Files">
       <UniqueIdentifier>{BAF00917-2652-E724-AFBF-2DD71B201EE4}</UniqueIdentifier>
@@ -93,6 +99,9 @@
     <ClInclude Include="src\Game\Target\TargetManager.h">
       <Filter>Header Files\Game\Target</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameOver\GameOverManager.h">
+      <Filter>Header Files\GameOver</Filter>
+    </ClInclude>
     <ClInclude Include="src\resource_dir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -133,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="src\Game\Target\TargetManager.cpp">
       <Filter>Source Files\Game\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameOver\GameOverManager.cpp">
+      <Filter>Source Files\GameOver</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
