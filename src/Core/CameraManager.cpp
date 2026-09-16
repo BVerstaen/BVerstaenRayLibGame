@@ -9,7 +9,7 @@ CameraManager::CameraManager() : m_tunnelHeight(128), m_isTunnelActive(false), m
 	m_camera.target = Vector2(0, 0);
 	m_camera.offset = Vector2(0, 0);
 	m_camera.rotation = 0.0f;
-	m_camera.zoom = 1.5f;
+	m_camera.zoom = GetWindowScaleDPI().x;
 }
 
 
