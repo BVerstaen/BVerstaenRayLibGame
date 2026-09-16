@@ -293,10 +293,10 @@
     <Image Include="resources\Sprites\Player\Player_Death.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
-    <Image Include="resources\Sprites\Player\Player_Flap.png">
+    <Image Include="resources\Sprites\Player\Player_Idle.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
-    <Image Include="resources\Sprites\Player\Player_Idle.png">
+    <Image Include="resources\Sprites\Player\Player_flap.png">
       <Filter>Game Resource Files\Sprites\Player</Filter>
     </Image>
   </ItemGroup>

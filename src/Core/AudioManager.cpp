@@ -31,6 +31,8 @@ AudioManager::AudioManager()
 
 AudioManager::~AudioManager()
 {
+	s_instance = nullptr;
+
 	//Unload sounds (each sound of each sound poll)
 	for (auto& sound : m_soundList)
 	{

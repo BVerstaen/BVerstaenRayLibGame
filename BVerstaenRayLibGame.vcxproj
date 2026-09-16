@@ -377,8 +377,8 @@
     <Image Include="resources\Sprites\Instruction.png" />
     <Image Include="resources\Sprites\Player\PlayerProjectile.png" />
     <Image Include="resources\Sprites\Player\Player_Death.png" />
-    <Image Include="resources\Sprites\Player\Player_Flap.png" />
     <Image Include="resources\Sprites\Player\Player_Idle.png" />
+    <Image Include="resources\Sprites\Player\Player_flap.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="raylib.vcxproj">
