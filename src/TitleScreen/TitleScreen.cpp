@@ -35,11 +35,9 @@ TitleScreen::~TitleScreen()
 
 #pragma endregion
 
-//returns true if a key is pressed
-bool TitleScreen::UpdateLogic(float deltaTime)
+void TitleScreen::UpdateLogic(float deltaTime)
 {
 	m_titleHue += deltaTime * m_hueSpeed;
-	return GetKeyPressed();
 }
 
 void TitleScreen::UpdateRender(const std::vector<int> highscoreList)

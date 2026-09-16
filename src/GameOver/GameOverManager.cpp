@@ -30,11 +30,11 @@ void GameOverManager::Reset()
 	m_counter = 0.0f;
 }
 
-//Returns true if switch state
+//Returns true if can switch state
 bool GameOverManager::UpdateLogic(float deltaTime)
 {
 	m_counter += deltaTime;
-	return (m_counter >= m_pressAnyKeyCounter && GetKeyPressed() != 0);
+	return (m_counter >= m_pressAnyKeyCounter);
 }
 
 void GameOverManager::UpdateRender(int currentScore, bool hasReachHighScore)

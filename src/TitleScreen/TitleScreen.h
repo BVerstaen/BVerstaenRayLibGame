@@ -17,7 +17,7 @@ public:
 #pragma endregion
 
 public:
-	bool UpdateLogic(float deltaTime);
+	void UpdateLogic(float deltaTime);
 	void UpdateRender(const std::vector<int> highscoreList);
 	void UpdateInstruction();
 

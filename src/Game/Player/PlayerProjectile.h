@@ -1,6 +1,8 @@
 #pragma once
 
 #include "raylib.h"
+#include "Player.h"
+#include <Core/InputManager.h>
 #include <vector>
 
 class PlayerProjectile
@@ -18,8 +20,8 @@ public:
 #pragma endregion
 
 public:
+	void Setup(const Player* player);
 	void Reset();
-	void SpawnProjectile(Vector2 playerPos);
 
 	void UpdateLogic(float deltaTime);
 	void UpdateRender();
@@ -29,6 +31,7 @@ public:
 	const Vector2& GetProjectileSize() const;
 
 private:
+	const Player* m_player;
 	const float m_projectileSpeed;
 	const int m_projectileLimit;
 	Texture m_projectileTexture;

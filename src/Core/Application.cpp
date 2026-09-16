@@ -5,6 +5,7 @@ void Application::Run()
 	//Setup systems
 	m_scoreSys.ResetScore();
 	m_player.Setup(&m_background);
+	m_playerProj.Setup(&m_player);
 
 	//Launch first state
 	m_currentGameState = GameState::TITLE;
@@ -28,32 +29,25 @@ void Application::LogicTick(float deltaTime)
 	//LOGIC UPDATE
 	switch (m_currentGameState)
 	{
+
 	case GameState::TITLE:
-	{
-		m_background.UpdateLogic(deltaTime);
-
-		if (m_titleScreen.UpdateLogic(deltaTime))
-			SwitchGameState(GameState::INSTRUCTION);
-		break;
-	}
-
 	case GameState::INSTRUCTION:
 	{
 		m_background.UpdateLogic(deltaTime);
-
-		if (m_titleScreen.UpdateLogic(deltaTime))
-			SwitchGameState(GameState::GAME);
+		m_titleScreen.UpdateLogic(deltaTime);
+		if (InputManager::Instance().IsAnyKeyPressed())
+			SwitchGameState(m_currentGameState == GameState::INSTRUCTION ? GameState::GAME : GameState::INSTRUCTION);
 		break;
 	}
 
 	case GameState::GAME:
 	{
+		InputManager::Instance().UpdateInputs();
+
 		m_background.UpdateLogic(deltaTime);
 		m_camera.UpdateLogic(deltaTime);
 		
 		m_player.UpdateLogic(deltaTime);
-		if (m_player.IsFiring())
-			m_playerProj.SpawnProjectile(m_player.GetPosition());
 		m_playerProj.UpdateLogic(deltaTime);
 
 		m_targetManager.UpdateLogic(deltaTime, m_background.GetSpeed(), m_background.GetGroundLayerSpeed());
@@ -69,7 +63,7 @@ void Application::LogicTick(float deltaTime)
 
 	case GameState::GAMEOVER:
 	{
-		if (m_gameOverManager.UpdateLogic(deltaTime))
+		if (m_gameOverManager.UpdateLogic(deltaTime) && InputManager::Instance().IsAnyKeyPressed())
 			SwitchGameState(GameState::TITLE);
 		break;
 	}

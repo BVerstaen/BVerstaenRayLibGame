@@ -4,7 +4,7 @@
 
 #pragma region Constructors / Desctructors / Movement
 
-PlayerProjectile::PlayerProjectile() : m_projectileLimit(5), m_projectileDirection(Vector2(0.5f, 0.5f)), m_projectileSpeed(900.0f), m_spawnOffset(Vector2(140, 30))
+PlayerProjectile::PlayerProjectile() : m_projectileLimit(5), m_projectileDirection(Vector2(0.5f, 0.5f)), m_projectileSpeed(900.0f), m_spawnOffset(Vector2(140, 30)), m_player(nullptr)
 {
 	m_projectileTexture = LoadTexture("Sprites\\Player\\PlayerProjectile.png");
 	m_projectileSize = Vector2(m_projectileTexture.width, m_projectileTexture.height);
@@ -17,19 +17,25 @@ PlayerProjectile::~PlayerProjectile()
 
 #pragma endregion
 
+void PlayerProjectile::Setup(const Player* player)
+{
+	m_player = player;
+
+	InputManager::Instance().BindKeyPressed(KEY_SPACE, [&]()
+		{
+			if (m_projectilePositions.size() < m_projectileLimit)
+			{
+				m_projectilePositions.push_back(Vector2Add(m_player->GetPosition(), m_spawnOffset));
+				AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERSHOOT);
+			}
+		});
+}
+
 void PlayerProjectile::Reset()
 {
 	m_projectilePositions.clear();
 }
 
-void PlayerProjectile::SpawnProjectile(Vector2 playerPos)
-{
-	if (m_projectilePositions.size() < m_projectileLimit)
-	{
-		m_projectilePositions.push_back(Vector2Add(playerPos, m_spawnOffset));
-		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERSHOOT);
-	}
-}
 
 void PlayerProjectile::UpdateLogic(float deltaTime)
 {

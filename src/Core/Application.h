@@ -19,6 +19,7 @@
 #include <GameOver/GameOverManager.h>
 #include "AudioManager.h"
 #include "CameraManager.h"
+#include "InputManager.h"
 
 class Application
 {
@@ -58,6 +59,7 @@ private:
 	//Game Systems
 	TitleScreen m_titleScreen;
 
+	InputManager m_input;
 	CameraManager m_camera;
 	Random m_rand;
 	GameFont m_font;

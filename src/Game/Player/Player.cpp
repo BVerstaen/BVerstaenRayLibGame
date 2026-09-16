@@ -38,6 +38,52 @@ void Player::Setup(Background* background)
 	m_slowSpeed = m_background->GetSpeed() * 0.5f;
 	m_defaultSpeed = m_background->GetSpeed();
 	m_fastSpeed = m_background->GetSpeed() * 1.5f;
+
+	//Bind inputs
+	InputManager::Instance().BindKeyPressed(KEY_UP, [&]()
+		{
+			m_verticalVelocity -= 100.0f;
+			m_currentFlapAnimationTimer = m_flapAnimationTimer;
+			AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERFLAP);
+		});
+	InputManager::Instance().BindKeyPressed(KEY_DOWN, [&]()
+		{
+			m_verticalVelocity += 100.0f;
+			m_currentFlapAnimationTimer = m_flapAnimationTimer;
+			AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERFLAP);
+		});
+	InputManager::Instance().BindKeyDown(KEY_LEFT, [&]()
+		{
+			if (m_isChangingSpeed != -1)
+			{
+				m_background->SetSpeed(m_slowSpeed);
+				m_isChangingSpeed = -1;
+			}
+		});
+	InputManager::Instance().BindKeyDown(KEY_RIGHT, [&]()
+		{
+			if (m_isChangingSpeed != 1)
+			{
+				m_background->SetSpeed(m_fastSpeed);
+				m_isChangingSpeed = 1;
+			}
+		});
+	InputManager::Instance().BindKeyUp(KEY_LEFT, [&]()
+		{
+			if (m_isChangingSpeed == -1)
+			{
+				m_background->SetSpeed(m_defaultSpeed);
+				m_isChangingSpeed = 0;
+			}
+		});
+	InputManager::Instance().BindKeyUp(KEY_RIGHT, [&]()
+		{
+			if (m_isChangingSpeed == 1)
+			{
+				m_background->SetSpeed(m_defaultSpeed);
+				m_isChangingSpeed = 0;
+			}
+		});
 }
 
 void Player::Reset()
@@ -49,43 +95,6 @@ void Player::Reset()
 
 void Player::UpdateLogic(float deltaTime)
 {
-	//Flap logic
-	if (IsKeyPressed(KEY_UP))
-	{
-		m_verticalVelocity -= 100.0f;
-		m_currentFlapAnimationTimer = m_flapAnimationTimer;
-		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERFLAP);
-	}
-	if (IsKeyPressed(KEY_DOWN))
-	{
-		m_verticalVelocity += 100.0f;
-		m_currentFlapAnimationTimer = m_flapAnimationTimer;
-		AudioManager::Instance().PlaySoundFromList(AudioManager::SoundList::PLAYERFLAP);
-	}
-
-	//Change speed
-	if (IsKeyDown(KEY_LEFT))
-	{
-		if (m_isChangingSpeed != -1)
-		{
-			m_background->SetSpeed(m_slowSpeed);
-			m_isChangingSpeed = -1;
-		}
-	}
-	else if (IsKeyDown(KEY_RIGHT))
-	{
-		if (m_isChangingSpeed != 1)
-		{
-			m_background->SetSpeed(m_fastSpeed);
-			m_isChangingSpeed = 1;
-		}
-	}
-	else if (m_isChangingSpeed != 0)
-	{
-		m_background->SetSpeed(m_defaultSpeed);
-		m_isChangingSpeed = false;
-	}
-	
 	//Physics logic
 	m_verticalVelocity += deltaTime * m_gravityForce;
 	m_position.y += deltaTime * m_verticalVelocity;
@@ -108,11 +117,6 @@ void Player::UpdateRender(float deltaTime)
 void Player::RenderDeath()
 {
 	DrawTextureV(m_deathTexture, m_position, WHITE);
-}
-
-const bool Player::IsFiring()
-{
-	return IsKeyPressed(KEY_SPACE);
 }
 
 const bool Player::CheckGroundCollision()

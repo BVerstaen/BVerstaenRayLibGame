@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include <Core/InputManager.h>
 
 class Background;
 
@@ -24,7 +25,6 @@ public:
 	void UpdateRender(float deltaTime);
 	void RenderDeath();
 
-	const bool IsFiring();
 	const bool CheckGroundCollision();
 
 private:
